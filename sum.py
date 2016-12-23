@@ -2,11 +2,12 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	sum [-f]
+	sum [-f] [-i]
 	sum [-h | --help]
 
 Options:
 	-f              Don't show error message.
+	-i              Convert result to int.
     -h --help       Show this screen and exit.
 
 Note:
@@ -15,6 +16,7 @@ Note:
 """
 
 FORCE = False
+FLOAT2INT = False
 
 def usage():
 	print(__doc__)
@@ -31,12 +33,18 @@ def main():
 				pass
 			else:
 				print('error line: {}'.format(row))
-	print(_sum)
+				
+	if FLOAT2INT:
+		print(int(_sum))
+	else:
+		print(_sum)
 
 if __name__ == '__main__':
-	for v in argv[:]:
+	for v in argv[1:]:
 		if v in ['-h', '--help']:
 			usage()
 		if v in ['-f']:
 			FORCE = True
+		if v in ['-i']:
+			FLOAT2INT = True
 	main()

@@ -44,9 +44,10 @@ def main(av):
 		for elm in data:
 			print(' '.join(elm))
 	else:
-		if av.isdigit():
+		if av.replace('-', '').isdigit():
 			for elm in data:
-				print(elm[int(av)])
+				try: print(elm[int(av)])
+				except: print('-')
 		else:
 			try:
 				for elm in data:

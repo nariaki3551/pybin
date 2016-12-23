@@ -21,7 +21,7 @@ def main(_str):
 		print(' '.join(row.strip().split(_str)))
 
 if __name__ == '__main__':
-	for v in argv[:]:
+	for v in argv[1:]:
 		if v in ['-h', '--help']:
 			usage()
 	if len(argv) == 2:

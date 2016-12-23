@@ -36,18 +36,21 @@ def main(av):
 		for elm in data:
 			print(elm)
 	else:
-		try:
-			for elm in eval('data[{}]'.format(av)):
-				print(elm)
-		except:
-			usage()
+		if av.replace('-', '').isdigit():
+			print(data[int(av)])
+		else:
+			try:
+				for elm in eval('data[{}]'.format(av)):
+					print(elm)
+			except:
+				usage()
 
 
 if __name__ == '__main__':
 	if len(argv) < 2:
 		usage()
 
-	for v in argv:
+	for v in argv[1:]:
 		if v in ['-h', '--help']:
 			usage()
 		if v in ['-l']:

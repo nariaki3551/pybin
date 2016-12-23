@@ -25,7 +25,7 @@ def main(strA, strB):
 		print(row.replace(strA, strB))
 
 if __name__ == '__main__':
-	for v in argv[:]:
+	for v in argv[1:]:
 		if v in ['-h', '--help']:
 			usage()
 	if len(argv) == 3:
