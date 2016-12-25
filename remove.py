@@ -1,4 +1,4 @@
-from sys import argv
+from sys import argv, stdin
 
 __doc__ = """
 Usage:
@@ -19,11 +19,8 @@ def usage():
 	print(__doc__)
 
 def main(_str):
-	while True:
-		try:
-			print(input().replace(_str, ''))
-		except:
-			break
+	for row in stdin.readlines():
+		print(row.strip().replace(_str, ''))
 
 if __name__ == '__main__':
 	if len(argv) < 2 or argv[1] in ['-h', '--help']:

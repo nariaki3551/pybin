@@ -1,5 +1,5 @@
 # COMMAND
-make new linux command by using python.
+Original linux commands by using python.
 
 
 ## Preparation
@@ -38,6 +38,9 @@ max(){
 min(){
 	python3 ~/COMMAND/min.py $1 $2
 }
+mean(){
+	python3 ~/COMMAND/mean.py $1 $2
+}
 replace(){
 	python3 ~/COMMAND/replace.py $1 $2
 }
@@ -47,8 +50,20 @@ join(){
 T(){
 	python3 ~/COMMAND/T.py $1
 }
+add(){
+	python3 ~/COMMAND/add.py $1 $2 $3
+}
+var(){
+	python3 ~/COMMAND/var.py $1 $2
+}
+corr(){
+	python3 ~/COMMAND/corr.py $1 $2 $3 $4
+}
+pysort(){
+	python3 ~/COMMAND/sort.py $1 $2 $3 $4 $5 $6 $7 $8 $9
+}
 ```
-Please change `~/COMMAND` according to the place where you downloaded COMMAND folder.
+Please change `~/COMMAND` according to the place where you downloaded `COMMAND` folder.
 <br>
 <br>
 
@@ -73,13 +88,13 @@ Reverse inputs.
 
 ```
 $ ls 
-> README.md
+README.md
 T.py
 column.py
 dict.py
 
 $ ls | reverse
-> dict.py
+dict.py
 column.py
 T.py
 README.md
@@ -91,12 +106,12 @@ Revese `cat file`.
 
 ```
 $ cat sample.txt
-> aaa
+aaa
 bbb
 ccc
 
 $ tac sample.txt
-> ccc
+ccc
 bbb
 aaa
 ```
@@ -107,13 +122,13 @@ Split the specified char.
 
 ```
 $ ls
-> README.md
+README.md
 T.py
 column.py
 dict.py
 
 $ ls | split .
-> REAME md
+README md
 T py
 column py
 dict py
@@ -126,23 +141,23 @@ Operations on rows.
 
 ```
 $ cat sample.txt
-> aaa
+aaa
 bbb
 ccc
 
 cat sample.txt | line -l
-> [0] aaa
+[0] aaa
 [1] bbb
 [2] CCC
 
 cat sample.txt | line 1
-> bbb
+bbb
 
 cat sample.txt | line -1 -l
-> [2] ccc
+[2] ccc
 
 cat sample.txt | line :-1
-> aaa
+aaa
 bbb
 ```
 <br>
@@ -152,25 +167,25 @@ Operations on columns.
 
 ```
 $ ls | split .
-> REAME md
+README md
 T py
 column py
 dict py
 
 $ ls | split . | column -l
-> [0] REAME [1] md
+[0] README [1] md
 [0] T [1] py
 [0] column [1] py
 [0] dict [1] py
 
 $ ls | split . | column -l -a
-> [0] REAME  [1] md
+[0] README  [1] md
 [0] T      [1] py
 [0] column [1] py
 [0] dict   [1] py
 
 $ ls | split . | column 0
-> REAME
+REAME
 T
 column
 dict
@@ -183,13 +198,13 @@ Remove specified char.
 
 ```
 $ ls
-> README.md
+README.md
 T.py
 column.py
 dict.py
 
 $ ls | remove py
-> README.md
+README.md
 T.
 column.
 dict.
@@ -197,67 +212,92 @@ dict.
 <br>
 
 ###<font color="Maroon">sum</font>
-Summation.
+Calculate total sum.
 
 ```
 $ cat test.txt
-> 10
+10
 20
 30
 
 $ cat test.txt | sum
-> 60.0
+60.0
 
 $ cat test.txt | sum -i 
 60 
 
 
 $ cat test2.txt
-> 10
+10
 20
 30
 aaa
 
 $ cat test2.txt | sum
-> error line: aaa
-10.0
+error line: aaa
+60.0
 ```
 <br>
 
 ###<font color="Maroon">max</font>
-Max.
+Find max element.
 
 ```
+$ cat test.txt
+10
+20
+30
+
 $ cat test.txt | max
-> 30.0
+30.0
 
 $ cat test.txt | max -i
 30
 ```
 <br>
 ###<font color="Maroon">min</font>
-Min.
+Find min element.
 
 ```
+$ cat test.txt
+10
+20
+30
+
 $ cat test.txt | min
-> 10.0
+10.0
 
 $ cat test.txt | min -i
 10
 ```
+
+<br>
+###<font color="Maroon">mean</font>
+Calculate mean.
+
+```
+$ cat test.txt
+10
+20
+30
+
+$ cat test.txt | mean
+20.0
+```
+
 <br>
 ###<font color="Maroon">replace</font>
 Replace strA to strB.
 
 ```
 $ ls
-> README.md
+README.md
 T.py
 column.py
 dict.py
 
 $ ls | replace . 2
-> README2md
+README2md
 T2py
 column2py
 dict2py
@@ -268,33 +308,152 @@ Join.
 
 ```
 $ ls | split .
-> README md
+README md
 T py
 column py
 dict py
 
 $ ls | split . | join 3
-> README3md
+README3md
 T3py
 column3py
 dict3py
 ```
 <br>
 ###<font color="Maroon">T</font>
+Swap rows and columns.
 
 ```
 $ ls | split .
-> README md
+README md
 T py
 column py
 dict py
 
 $ ls | split . | T
-> README T column dict 
+README T column dict 
 md py py py 
 
 $ ls | split . | T | column -a
-> README T  column dict
+README T  column dict
 md     py py     py
 ```
-<font color="Maroon"></font>
+
+<br>
+###<font color="Maroon">add</font>
+
+Attach char in head or tail.
+
+```
+$ ls
+README.md
+T.py
+column.py
+dict.py
+
+$ ls | add -a test_
+test_README.md
+test_T.py
+test_column.py
+test_dict.py
+
+$ ls | add -e _back
+README.md_back
+T.py_back
+column.py_back
+dict.py_back
+
+```
+
+<br>
+###<font color="Maroon">add</font>
+
+Calculate variance.
+
+```
+$ cat test.txt
+10
+20
+30
+
+$ cat test.txt | var -d 0
+66.6666666667
+
+$ cat test.txt | var -d 1
+100.0
+```
+
+<br>
+
+###<font color="Maroon">corr</font>
+
+Calculate correlation coefficient.
+
+```
+$ cat tmp.txt | split ,
+a b c
+1 3 4
+1 2 3
+0 1 5
+3 5 2
+4 5 3
+
+$ cat tmp.txt | split , | corr -p 0 1
+a b: 0.9525793444156803
+
+$ $ cat tmp.txt | split , | corr -p -a
+a b: 0.9525793444156803
+a c: -0.7472647177570733
+b c: -0.7844645405527361
+
+$ $ cat tmp.txt | split , | corr -p -a | pysort -k 2
+a c: -0.7472647177570733
+b c: -0.7844645405527361
+a b: 0.9525793444156803
+```
+<br>
+
+###<font color="Maroon">pysort</font>
+Sort.
+
+```
+$ cat tmp.txt
+0 39
+31 2
+10 2
+6 21
+1 4
+52 4
+
+$ cat tmp.txt | pysort
+0 39
+1 4
+31 2
+10 2
+52 4
+6 21
+
+$ cat tmp.txt | pysort -n -i
+0 39
+1 4
+6 21
+31 2
+10 2
+52 4
+
+$ cat tmp.txt | pysort -k 1 -n
+31 2
+10 2
+1 4
+52 4
+6 21
+0 39
+
+$ cat tmp.txt | pysort -k 1 0 -n
+10 2
+31 2
+1 4
+52 4
+6 21
+0 39
+```

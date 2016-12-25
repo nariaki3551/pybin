@@ -27,4 +27,4 @@ if __name__ == '__main__':
 	if len(argv) == 2:
 		main(_str=argv[1])
 	else:
-		main(_str='')
+		usage()
