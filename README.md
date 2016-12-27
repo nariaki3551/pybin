@@ -1,4 +1,4 @@
-# COMMAND
+# pybin
 Original linux commands by using python.
 
 
@@ -23,7 +23,7 @@ Essentially all commands are used through pipes.<br>
 Exsample,
 `cat file | reverse`.<br><br>
 Some commands can be given options.  
-Exsample, `cat file | line -f`
+Exsample, `cat file | line -l`
 
 ##Simple explanation of each command
 
