@@ -2,77 +2,21 @@
 Original linux commands by using python.
 
 
-## Preparation
-Download `COMMAND`folder in your home directory (or anywhere). <br>
-Then, open `.bashrc` file in your home dirctory and add the following.
+## Install
+Download `pybin` folder in your home directory, and type following
 
 ```
-##### COMMAND ######
-dict(){
-	python3 ~/COMMAND/dict.py $1
-}
-reverse() {
-	python3 ~/COMMAND/reverse.py
-}
-tac(){
-	cat "$1" | reverse
-}
-line(){
-	python3 ~/COMMAND/line.py $1 $2
-}
-column(){
-	python3 ~/COMMAND/column.py $1 $2 $3
-}
-remove(){
-	python3 ~/COMMAND/remove.py $1
-}
-split(){
-	python3 ~/COMMAND/split.py $1 
-}
-sum(){
-	python3 ~/COMMAND/sum.py $1 $2
-}
-max(){
-	python3 ~/COMMAND/max.py $1 $2
-}
-min(){
-	python3 ~/COMMAND/min.py $1 $2
-}
-mean(){
-	python3 ~/COMMAND/mean.py $1 $2
-}
-replace(){
-	python3 ~/COMMAND/replace.py $1 $2
-}
-join(){
-	python3 ~/COMMAND/join.py $1
-}
-T(){
-	python3 ~/COMMAND/T.py $1
-}
-add(){
-	python3 ~/COMMAND/add.py $1 $2 $3
-}
-var(){
-	python3 ~/COMMAND/var.py $1 $2
-}
-corr(){
-	python3 ~/COMMAND/corr.py $1 $2 $3 $4
-}
-pysort(){
-	python3 ~/COMMAND/sort.py $1 $2 $3 $4 $5 $6 $7 $8 $9
-}
+cd ~/pybin
+python3 setup.py
 ```
-Please change `~/COMMAND` according to the place where you downloaded `COMMAND` folder.
-<br>
-<br>
 
-Next, add the following to `.bash_profile`
+Then, add following in `~/.bash_profile`
 
 ```
-# read align from .bashrc
-source ~/.bashrc
+PATH=~/pybin:"$PATH"
 ```
+
+
 
 ##How to use
 Essentially all commands are used through pipes.<br>

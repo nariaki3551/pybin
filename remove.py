@@ -3,11 +3,12 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	remove str
+	remove [-s]str
 	remove [-h | --help]
 
 Options:
-    -h --help       Show this screen and exit.
+    -s            Strip lines.
+    -h --help     Show this screen and exit.
 
 Note:
 	入力文字列からstrを取り除く
@@ -15,16 +16,26 @@ Note:
 	    ls | remove .py
 """
 
+STRIP = False
 
 def usage():
 	print(__doc__)
+	exit()
 
 def main(_str):
 	for row in stdin.readlines():
-		print(row.strip().replace(_str, ''))
+		if STRIP:
+			row = row.stlip()
+		else:
+			row = row.replace('\n', '')
+		print(row.replace(_str, ''))
 
 if __name__ == '__main__':
-	if len(argv) < 2 or argv[1] in ['-h', '--help']:
-		usage()
+	if v in argv[1:]:
+		if v in ['-h', '--help']:
+			usage()
+		if v in ['-s']:
+			STRIP = True
+			argv.remove(v)
 	else:
 		main(_str=argv[1])
