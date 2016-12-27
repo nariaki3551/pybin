@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 from sys import argv, stdin
 
 __doc__ = """

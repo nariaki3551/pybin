@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 from sys import stdin 
 data = [row.strip() for row in stdin.readlines()]
 for elm in data[::-1]:
