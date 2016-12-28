@@ -1,23 +1,25 @@
 # pybin
 Original linux commands by using python.
 
-
+<br>
 ## Install
-Download `pybin` folder in your home directory, and type following
+Open Application `Terminal.app` and type following.
 
 ```
+git clone https://github.com/nariaki3551/pybin.git
 cd ~/pybin
 python3 setup.py
 ```
 
-Then, add following in `~/.bash_profile`
+Then, add following in `~/.bash_profile`.
 
 ```
+# Setting PATH for pybin
 PATH=~/pybin:"$PATH"
 ```
 
 
-
+<br>
 ##How to use
 Essentially all commands are used through pipes.<br>
 Exsample,
@@ -25,6 +27,7 @@ Exsample,
 Some commands can be given options.  
 Exsample, `cat file | line -l`
 
+<br>
 ##Simple explanation of each command
 
 ###<font color="Maroon">reverse</font>
