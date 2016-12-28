@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import subprocess as sp
-import os.path
 
 __doc__='''
 Usage:
-    python3 setup.py
-    
+        python3 setup.py
+        
 Note:
-    make symbolic links for all commands.
+        install python packaage
+        make symbolic links for all commands.
 '''
 
 scripts = ['T.py',
@@ -33,10 +33,19 @@ scripts = ['T.py',
 
 
 def main():
-	for file in scripts:
-		sp.run(['ln', '-s', file, file.replace('.py', '')])
-	print('OK')
+    try:
+      # install python package
+      print(sp.getoutput('pip3 install numpy'))
+
+      # make symbolic links
+      for file in scripts:
+          sp.getoutput('chmod +x {}'.format(file))
+          print(sp.getoutput('ln -s {} {}'.format(file, file.replace('.py', ''))))
+    except:
+      print('\n ERROR'); exit()
+
+    print('\n🍣  ALL COMPLATE')
 
 
 if __name__ == '__main__':
-	main()
+    main()
