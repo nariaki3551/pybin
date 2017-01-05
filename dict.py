@@ -17,7 +17,7 @@ def usage():
     print(__doc__)
     exit()
 
-def main():
+def main(word):
     word = argv[1]
     result = DCSCopyTextDefinition(None, word, (0, len(word)))
     try:
@@ -30,6 +30,7 @@ def main():
 
 
 if __name__ == '__main__':
-    if len(argv) < 2 or argv[1] in ['-h', '--help']:
-        usage()
-    main()
+    for v in argv[1:]:
+        if v in ['-h', '--help']:
+            usage()
+    main(word=argv[1])
