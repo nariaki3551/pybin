@@ -398,22 +398,22 @@ $ cat tmp.txt
 $ cat tmp.txt | pysort
 0 39
 1 4
-31 2
 10 2
+31 2
 52 4
 6 21
 
 
-$ cat tmp.txt | pysort -n 
+$ cat tmp.txt | pysort -n -i
 0 39
 1 4
 6 21
-31 2
 10 2
+31 2
 52 4
 
 
-$ cat tmp.txt | pysort -k 1 -n
+$ cat tmp.txt | pysort -k 1 -n -i
 31 2
 10 2
 1 4
@@ -422,7 +422,7 @@ $ cat tmp.txt | pysort -k 1 -n
 0 39
 
 
-$ cat tmp.txt | pysort -k 1 0 -n
+$ cat tmp.txt | pysort -k 1 0 -n -i
 10 2
 31 2
 1 4

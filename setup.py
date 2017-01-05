@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import subprocess as sp
 
 __doc__='''
@@ -15,7 +14,6 @@ scripts = ['T.py',
            'add.py',
            'column.py',
            'corr.py',
-           'dict.py',
            'join.py',
            'line.py',
            'max.py',

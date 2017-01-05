@@ -56,7 +56,6 @@ def main(key=None):
             print(' '.join(row))
 
 if __name__ == '__main__':
-    print(argv)
     for v in argv[1:]:
         if v in ['-h', '--help']:
             usage()
