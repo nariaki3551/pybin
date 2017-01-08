@@ -1,5 +1,5 @@
 # pybin
-Original linux commands by using python.
+Original linux commands by python.
 
 <br>
 ## Install
@@ -28,7 +28,7 @@ Some commands can be given options.
 Exsample, `cat file | line -l`
 
 <br>
-##Simple explanation of each command
+##Simple explanation of commands
 
 ###<font color="Maroon">reverse</font>
 Reverse inputs.
@@ -63,7 +63,6 @@ aaa
 bbb
 ccc
 
-
 cat sample.txt | line -l
 [0] aaa
 [1] bbb
@@ -71,11 +70,6 @@ cat sample.txt | line -l
 
 cat sample.txt | line 1
 bbb
-
-
-cat sample.txt | line -1 -l
-[2] ccc
-
 
 cat sample.txt | line :-1
 aaa
@@ -102,7 +96,7 @@ $ ls | split . | column -l
 
 
 $ ls | split . | column -l -a
-[0] README  [1] md
+[0] README [1] md
 [0] T      [1] py
 [0] column [1] py
 [0] dict   [1] py
@@ -138,7 +132,7 @@ dict.
 
 <br>
 ###<font color="Maroon">replace</font>
-Replace strA to strB.
+Replace charA to charB.
 
 ```
 $ ls
@@ -202,6 +196,7 @@ T py
 column py
 dict py
 
+
 $ ls | split -n 2
 RE ADME.md
 T. py
@@ -262,10 +257,8 @@ $ cat test.txt
 20
 30
 
-
 $ cat test.txt | sum
 60.0
-
 
 $ cat test.txt | sum -i 
 60 
@@ -277,10 +270,12 @@ $ cat test2.txt
 30
 aaa
 
-
 $ cat test2.txt | sum
 error line: aaa
 60.0
+
+$ cat test2.txt | sum -f -i 
+60
 ```
 <br>
 
@@ -293,10 +288,8 @@ $ cat test.txt
 20
 30
 
-
 $ cat test.txt | max
 30.0
-
 
 $ cat test.txt | max -i
 30
@@ -311,10 +304,8 @@ $ cat test.txt
 20
 30
 
-
 $ cat test.txt | min
 10.0
-
 
 $ cat test.txt | min -i
 10
@@ -329,7 +320,6 @@ $ cat test.txt
 10
 20
 30
-
 
 $ cat test.txt | mean
 20.0
@@ -346,10 +336,8 @@ $ cat test.txt
 20
 30
 
-
 $ cat test.txt | var -d 0
 66.6666666667
-
 
 $ cat test.txt | var -d 1
 100.0
@@ -381,9 +369,9 @@ a c: -0.7472647177570733
 b c: -0.7844645405527361
 
 
-$ $ cat tmp.txt | split , | corr -p -a | pysort -k 2
-a c: -0.7472647177570733
+$ $ cat tmp.txt | split , | corr -p -a | pysort -k 2 -n
 b c: -0.7844645405527361
+a c: -0.7472647177570733
 a b: 0.9525793444156803
 ```
 <br>
@@ -400,7 +388,6 @@ $ cat tmp.txt
 1 4
 52 4
 
-
 $ cat tmp.txt | pysort
 0 39
 1 4
@@ -408,7 +395,6 @@ $ cat tmp.txt | pysort
 31 2
 52 4
 6 21
-
 
 $ cat tmp.txt | pysort -n -i
 0 39
@@ -418,7 +404,6 @@ $ cat tmp.txt | pysort -n -i
 31 2
 52 4
 
-
 $ cat tmp.txt | pysort -k 1 -n -i
 31 2
 10 2
@@ -426,7 +411,6 @@ $ cat tmp.txt | pysort -k 1 -n -i
 52 4
 6 21
 0 39
-
 
 $ cat tmp.txt | pysort -k 1 0 -n -i
 10 2
