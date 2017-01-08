@@ -38,7 +38,9 @@ def main():
       # make symbolic links
       for file in scripts:
           sp.getoutput('chmod +x {}'.format(file))
-          print(sp.getoutput('ln -s {} {}'.format(file, file.replace('.py', ''))))
+          print('chmod +x {}'.format(file))
+          sp.getoutput('ln -s {} {}'.format(file, file.replace('.py', '')))
+          print('ln -s {} {}'.format(file, file.replace('.py', '')))
     except:
       print('\n ERROR'); exit()
 

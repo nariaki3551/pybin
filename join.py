@@ -3,7 +3,7 @@ from sys import stdin, argv
 
 __doc__ = """
 Usage:
-    join [-s] str
+    join [-s] char
     join [-h | --help]
 
 Options:
