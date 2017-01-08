@@ -201,6 +201,12 @@ README md
 T py
 column py
 dict py
+
+$ ls | split -n 2
+RE ADME.md
+T. py
+co lumn.py
+di ct.py
 ```
 
 <br>
