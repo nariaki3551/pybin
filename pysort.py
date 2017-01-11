@@ -34,11 +34,11 @@ def main(key=None):
     data = [ row.strip().split() for row in stdin.readlines() ]
     if key == []:
         if NUMBER:
-            data[:] = [ [float(elm) for elm in row] for row in data]
+            data[:] = [ [float(elm) for elm in row] for row in data ]
             tmp = sorted(data, reverse=REVERSE)
             if INT:
                 tmp[:] = [ [int(elm) for elm in row] for row in tmp ]
-            tmp[:] = [ [str(elm) for elm in row] for row in tmp]
+            tmp[:] = [ [str(elm) for elm in row] for row in tmp ]
         else:
             tmp = sorted(data, reverse=REVERSE)
 
