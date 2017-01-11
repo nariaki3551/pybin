@@ -3,7 +3,7 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	remove [-s]str
+	remove [-s] str
 	remove [-h | --help]
 
 Options:
@@ -31,11 +31,13 @@ def main(_str):
 		print(row.replace(_str, ''))
 
 if __name__ == '__main__':
-	if v in argv[1:]:
+	for v in argv[1:]:
 		if v in ['-h', '--help']:
 			usage()
 		if v in ['-s']:
 			STRIP = True
 			argv.remove(v)
-	else:
+	if len(argv) == 2:
 		main(_str=argv[1])
+	else:
+		usage()
