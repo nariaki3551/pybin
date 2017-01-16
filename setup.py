@@ -26,6 +26,7 @@ scripts = ['T.py',
            'split.py',
            'sum.py',
            'var.py'
+           'pywhile.py'
           ]
 
 
