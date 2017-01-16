@@ -11,7 +11,7 @@ cd ~/pybin
 python3 setup.py
 ```
 
-Then, add following in `~/.bash_profile`.
+Then, add following in `~/.bash_profile` or other appropriate file.
 
 ```
 # Setting PATH for pybin
@@ -23,13 +23,13 @@ PATH=~/pybin:"$PATH"
 ##How to use
 Essentially all commands are used through pipes.<br>
 Exsample,
-`cat file | reverse`.<br><br>
-Some commands can be given options.  
+`cat file | reverse`<br><br>
+Some commands has options.  
 Exsample, `cat file | line -l`
 
 <br>
 ##Simple explanation of commands
-
+###Text manipulation
 ###<font color="Maroon">reverse</font>
 Reverse inputs.
 
@@ -53,6 +53,32 @@ def main():
 ```
 <br>
 
+###<font color="Maroon">split</font>
+Split the specified char.
+
+```
+$ ls
+README.md
+T.py
+column.py
+dict.py
+
+
+$ ls | split .
+README md
+T py
+column py
+dict py
+
+
+$ ls | split -n 2
+RE ADME.md
+T. py
+co lumn.py
+di ct.py
+```
+
+<br>
 
 ###<font color="Maroon">line</font>
 Operations on rows.
@@ -168,40 +194,12 @@ test_column.py
 test_dict.py
 
 
-$ ls | add -e -a \'
+$ ls | add -a -e \'
 'README.md'
 'T.py'
 'column.py'
 'dict.py'
 
-```
-
-<br>
-
-
-###<font color="Maroon">split</font>
-Split the specified char.
-
-```
-$ ls
-README.md
-T.py
-column.py
-dict.py
-
-
-$ ls | split .
-README md
-T py
-column py
-dict py
-
-
-$ ls | split -n 2
-RE ADME.md
-T. py
-co lumn.py
-di ct.py
 ```
 
 <br>
@@ -248,6 +246,7 @@ md     py py     py
 
 <br>
 
+### statistics
 ###<font color="Maroon">sum</font>
 Calculate total sum.
 
@@ -376,6 +375,7 @@ a b: 0.9525793444156803
 ```
 <br>
 
+###others
 ###<font color="Maroon">pysort</font>
 Sort.
 
@@ -419,4 +419,45 @@ $ cat tmp.txt | pysort -k 1 0 -n -i
 52 4
 6 21
 0 39
+```
+
+<br>
+###<font color="Maroon">pywhile</font>
+While commands.
+
+```
+$ ls 
+README.md
+T.py
+column.py
+dict.py
+
+$ ls | pywhile wc 
+     436     801    4361 README.md
+      34      83     655 T.py
+      76     209    1905 column.py
+      35      69     692 dict.py
+
+$ ls | pywhile wc -l
+     436 README.md
+      34 T.py
+      76 column.py
+      35 dict.py
+```
+
+
+<br>
+<br>
+<br>
+##Specific example of commands
+Sort files by line number.
+
+```
+ls | pywhile wc -l | pysort -k 0 -n
+```
+<br>
+Kill all jobs.
+
+```
+jobs -ls | column 1 | pywhile kill
 ```
