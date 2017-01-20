@@ -200,6 +200,11 @@ $ ls | add -a -e \'
 'column.py'
 'dict.py'
 
+$ ls | add -a -n 0
+0README.md
+1T.py
+2column.py
+3dict.py
 ```
 
 <br>
