@@ -51,6 +51,7 @@ def main2(start_num):
             print(str(count)+row.strip()+str(count))
         count += 1
 
+
 if __name__ == '__main__':
     for v in argv[1:]:
         if v in ['-h', '--help']:

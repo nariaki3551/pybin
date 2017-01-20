@@ -1,5 +1,5 @@
-from sys import argv, stdin
 #!/usr/local/bin/python3
+from sys import argv, stdin
 from numpy import var
 
 __doc__ = """

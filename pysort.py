@@ -6,14 +6,12 @@ Usage:
     pysort [-r | --reverse] [-n]
     pysort [-k | --key] column1 column2 ...
     pysort [-h | --help]
-
 Options:
     -r --reverse    Reverse.
     -k --key        
     -n 
     -i 
     -h --help       Show this screen and exit.
-
 Note:
     標準入力をsortする.
     -k keyを指定できる.
