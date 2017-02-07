@@ -33,7 +33,6 @@ def main(condi):
         if eval(condi):
             print(' '.join(row))
 
-
 if __name__ == '__main__':
     for v in argv[1:]:
         if v in ['-h', '--help']:
