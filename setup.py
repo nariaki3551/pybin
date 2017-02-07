@@ -27,7 +27,8 @@ scripts = ['T.py',
            'sum.py',
            'var.py',
            'pywhile.py',
-           'count.py'
+           'count.py',
+           'pyif.py'
           ]
 
 

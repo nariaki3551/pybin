@@ -250,8 +250,40 @@ md     py py     py
 ```
 
 <br>
+###<font color="Maroon">count</font>
+```
+$ cat test.txt
+1
+2
+3
+1
+2
 
-### statistics
+$ cat test.txt | count
+3: 1
+1: 2
+2: 2
+```
+<br>
+###<font color="Maroon">pyif</font>
+```
+$ cat test.txt
+a 1
+b 1
+c 1
+d 2
+e 3
+f 2
+
+$ cat test.txt | pyif 'float(row[1]) >= 2'
+d 2
+e 3
+f 2 
+```
+
+<br>
+
+## statistics
 ###<font color="Maroon">sum</font>
 Calculate total sum.
 
