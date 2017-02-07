@@ -20,7 +20,7 @@ Note:
     入力文字列にstrを追加する
     ex)
         ls | add -a \'
-        ls | add -e -n
+        ls | add -e -n 0
 """
 
 HEAD = False
