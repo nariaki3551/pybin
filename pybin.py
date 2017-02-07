@@ -32,6 +32,8 @@ def LIST_print():
                'count.py',
                'pyif.py'
                ]
+
+    print('pybin has ....\n')
     for script in scripts:
         print(script.replace('.py', ''))
 
