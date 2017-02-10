@@ -3,7 +3,7 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	line [-l] [-v] [-s] [-v] number or splice
+	line [-l] [-v] [-s] number or splice
 	line [-h | --help]
 
 Options:

@@ -1,4 +1,7 @@
 #!/usr/local/bin/python3
+# ---- memo ---------------------
+# [2017-02-10] \|入力を追加
+# -------------------------------
 from sys import argv, stdin
 from collections import defaultdict
 
@@ -18,6 +21,7 @@ Note:
     ex)
         cat file | column 3
         cat file | column 4:-1
+        cat file | column 1\|4\|8: (1, 4行目と8行目以降を表示)
 """
 
 COLUMN = False
@@ -45,17 +49,21 @@ def main(av):
         for elm in data:
             print(' '.join(elm))
     else:
-        if av.replace('-', '').isdigit():
-            for elm in data:
-                try: print(elm[int(av)])
-                except: print('-')
-        else:
-            try:
-                for elm in data:
-                    tmp = eval('elm[{}]'.format(av))
-                    print(' '.join(tmp))
-            except:
-                usage()
+        av = av.split('|')
+        for elm in data:
+            tmp = list()
+            for co in av:
+                if ':' in co:
+                    try:
+                        tmp += (eval('elm[{}]'.format(co)))
+                    except:
+                        tmp.append(' ')
+                else:
+                    try:
+                        tmp.append(eval('elm[{}]'.format(co)))
+                    except:
+                        tmp.append(' ')
+            print(' '.join(tmp))
 
 if __name__ == '__main__':
     if len(argv) < 2:

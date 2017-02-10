@@ -133,6 +133,14 @@ REAME
 T
 column
 dict
+
+
+$ ls | split . | column 0\|1
+README md
+T py
+column py
+dict py
+
 ```
 
 <br>
