@@ -22,10 +22,10 @@ PATH=~/pybin:"$PATH"
 <br>
 ##How to use
 Essentially all commands are used through pipes.<br>
-Exsample,
+Example,
 `cat file | reverse`<br><br>
 Some commands has options.  
-Exsample, `cat file | line -l`
+Example, `cat file | line -l`
 
 <br>
 ##Simple explanation of commands
