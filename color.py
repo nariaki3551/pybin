@@ -14,6 +14,10 @@ Note:
     色付き表示
     blue, cyan , green, magenta 
     red, white, yellow
+    
+    ex)
+    cat file | color import
+    cat file | color red import | color blue from -nb
 """
 
 def usage():
