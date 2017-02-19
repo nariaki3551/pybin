@@ -47,13 +47,13 @@ def main(colA, colB):
         for colA, colB in combinations(range(num_column), 2):
             corr = np.corrcoef(data[colA], data[colB])[0, 1]
             if PARAMETOR:
-                print('{} {}: {}'.format(para_list[colA], para_list[colB], corr))
+                print('{} {} {}'.format(para_list[colA], para_list[colB], corr))
             else:
                 print(corr)
     else:
         corr = np.corrcoef(data[colA], data[colB])[0, 1]
         if PARAMETOR:
-            print('{} {}: {}'.format(para_list[colA], para_list[colB], corr))
+            print('{} {} {}'.format(para_list[colA], para_list[colB], corr))
         else:
             print(corr)
 

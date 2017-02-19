@@ -29,7 +29,8 @@ scripts = ['T.py',
            'pywhile.py',
            'count.py',
            'pyif.py',
-           'pybin.py'
+           'pybin.py',
+           'color.py'
           ]
 
 
@@ -37,14 +38,16 @@ scripts = ['T.py',
 def main():
     try:
       # install python package
-      print(sp.getoutput('pip3 install numpy'))
+      sp.run(['pip3', 'install', 'numpy'])
+      sp.run(['pip3', 'install', 'fabric'])
+
 
       # make symbolic links
       for file in scripts:
-          sp.getoutput('chmod +x {}'.format(file))
           print('chmod +x {}'.format(file))
-          sp.getoutput('ln -s {} {}'.format(file, file.replace('.py', '')))
+          sp.getoutput('chmod +x {}'.format(file))
           print('ln -s {} {}'.format(file, file.replace('.py', '')))
+          sp.getoutput('ln -s {} {}'.format(file, file.replace('.py', '')))
     except:
       print('\n ERROR'); exit()
 
