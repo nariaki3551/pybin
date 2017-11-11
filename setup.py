@@ -4,7 +4,7 @@ import subprocess as sp
 __doc__='''
 Usage:
         python3 setup.py
-        
+
 Note:
         install python packaage
         make symbolic links for all commands.
@@ -12,9 +12,9 @@ Note:
 
 scripts = ['T.py',
            'add.py',
-           'column.py',
+           'pycolumn.py',
            'corr.py',
-           'join.py',
+           'pyjoin.py',
            'line.py',
            'max.py',
            'mean.py',
@@ -24,7 +24,7 @@ scripts = ['T.py',
            'replace.py',
            'reverse.py',
            'split.py',
-           'sum.py',
+           'pysum.py',
            'var.py',
            'pywhile.py',
            'count.py',
