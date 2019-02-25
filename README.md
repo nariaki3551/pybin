@@ -2,8 +2,10 @@
 Original linux commands by python.
 
 <br>
+
 ## Install
-Open Application `Terminal.app` and type following.
+
+Type following in where you want to save `pybin`.
 
 ```
 git clone https://github.com/nariaki3551/pybin.git
@@ -20,7 +22,8 @@ PATH=~/pybin:"$PATH"
 
 
 <br>
-##How to use
+## How to use
+
 Essentially all commands are used through pipes.<br>
 Example,
 `cat file | reverse`<br><br>
@@ -28,12 +31,15 @@ Some commands has options.
 Example, `cat file | line -l`
 
 <br>
-##Simple explanation of commands
+
+## Simple explanation of commands
+
 ###Text manipulation
-###<font color="Maroon">reverse</font>
+#### <font color="Maroon">reverse</font>
+
 Reverse inputs.
 
-```
+```bash
 $ cat aaa.py
 def main():
     print('HELLO WORLD')
@@ -53,10 +59,11 @@ def main():
 ```
 <br>
 
-###<font color="Maroon">split</font>
+#### <font color="Maroon">split</font>
+
 Split the specified char.
 
-```
+```shell
 $ ls
 README.md
 T.py
@@ -80,10 +87,11 @@ di ct.py
 
 <br>
 
-###<font color="Maroon">line</font>
+#### <font color="Maroon">line</font>
+
 Operations on rows.
 
-```
+```shell
 $ cat sample.txt
 aaa
 bbb
@@ -103,10 +111,11 @@ bbb
 ```
 <br>
 
-###<font color="Maroon">column</font>
+#### <font color="Maroon">pycolumn</font>
+
 Operations on columns.
 
-```
+```shell
 $ ls | split .
 README md
 T py
@@ -114,28 +123,28 @@ column py
 dict py
 
 
-$ ls | split . | column -l
+$ ls | split . | pycolumn -l
 [0] README [1] md
 [0] T [1] py
 [0] column [1] py
 [0] dict [1] py
 
 
-$ ls | split . | column -l -a
+$ ls | split . | pycolumn -l -a
 [0] README [1] md
 [0] T      [1] py
 [0] column [1] py
 [0] dict   [1] py
 
 
-$ ls | split . | column 0
+$ ls | split . | pycolumn 0
 REAME
 T
 column
 dict
 
 
-$ ls | split . | column 0\|1
+$ ls | split . | pycolumn 0\|1
 README md
 T py
 column py
@@ -145,11 +154,11 @@ dict py
 
 <br>
 
+#### <font color="Maroon">remove</font>
 
-###<font color="Maroon">remove</font>
 Remove specified char.
 
-```
+```shell
 $ ls
 README.md
 T.py
@@ -165,10 +174,11 @@ dict.
 ```
 
 <br>
-###<font color="Maroon">replace</font>
+#### <font color="Maroon">replace</font>
+
 Replace charA to charB.
 
-```
+```shell
 $ ls
 README.md
 T.py
@@ -183,11 +193,12 @@ column2py
 dict2py
 ```
 <br>
-###<font color="Maroon">add</font>
+
+#### <font color="Maroon">add</font>
 
 Attach char in head or tail.
 
-```
+```shell
 $ ls
 README.md
 T.py
@@ -217,11 +228,11 @@ $ ls | add -a -n 0
 
 <br>
 
+#### <font color="Maroon">join</font>
 
-###<font color="Maroon">join</font>
 Join.
 
-```
+```shell
 $ ls | split .
 README md
 T py
@@ -236,10 +247,11 @@ column3py
 dict3py
 ```
 <br>
-###<font color="Maroon">T</font>
+#### <font color="Maroon">T</font>
+
 Swap rows and columns.
 
-```
+```shell
 $ ls | split .
 README md
 T py
@@ -258,8 +270,9 @@ md     py py     py
 ```
 
 <br>
-###<font color="Maroon">count</font>
-```
+#### <font color="Maroon">count</font>
+
+```shell
 $ cat test.txt
 1
 2
@@ -273,8 +286,9 @@ $ cat test.txt | count
 2: 2
 ```
 <br>
-###<font color="Maroon">pyif</font>
-```
+#### <font color="Maroon">pyif</font>
+
+```shell
 $ cat test.txt
 a 1
 b 1
@@ -291,11 +305,13 @@ f 2
 
 <br>
 
-## statistics
-###<font color="Maroon">sum</font>
+### statistics
+
+#### <font color="Maroon">sum</font>
+
 Calculate total sum.
 
-```
+```shell
 $ cat test.txt
 10
 20
@@ -323,10 +339,11 @@ $ cat test2.txt | sum -f -i
 ```
 <br>
 
-###<font color="Maroon">max</font>
+#### <font color="Maroon">max</font>
+
 Find max element.
 
-```
+```shell
 $ cat test.txt
 10
 20
@@ -339,10 +356,11 @@ $ cat test.txt | max -i
 30
 ```
 <br>
-###<font color="Maroon">min</font>
+#### <font color="Maroon">min</font>
+
 Find min element.
 
-```
+```shell
 $ cat test.txt
 10
 20
@@ -356,10 +374,11 @@ $ cat test.txt | min -i
 ```
 
 <br>
-###<font color="Maroon">mean</font>
+#### <font color="Maroon">mean</font>
+
 Calculate mean.
 
-```
+```shell
 $ cat test.txt
 10
 20
@@ -370,11 +389,11 @@ $ cat test.txt | mean
 ```
 <br>
 
-###<font color="Maroon">var</font>
+#### <font color="Maroon">var</font>
 
 Calculate variance.
 
-```
+```shell
 $ cat test.txt
 10
 20
@@ -389,11 +408,11 @@ $ cat test.txt | var -d 1
 
 <br>
 
-###<font color="Maroon">corr</font>
+#### <font color="Maroon">corr</font>
 
 Calculate correlation coefficient.
 
-```
+```shell 
 $ cat tmp.txt | split ,
 a b c
 1 3 4
@@ -407,13 +426,13 @@ $ cat tmp.txt | split , | corr -p 0 1
 a b: 0.9525793444156803
 
 
-$ $ cat tmp.txt | split , | corr -p -a
+$ cat tmp.txt | split , | corr -p -a
 a b: 0.9525793444156803
 a c: -0.7472647177570733
 b c: -0.7844645405527361
 
 
-$ $ cat tmp.txt | split , | corr -p -a | pysort -k 2 -n
+$ cat tmp.txt | split , | corr -p -a | pysort -k 2 -n
 b c: -0.7844645405527361
 a c: -0.7472647177570733
 a b: 0.9525793444156803
@@ -421,10 +440,11 @@ a b: 0.9525793444156803
 <br>
 
 ###others
-###<font color="Maroon">pysort</font>
+#### <font color="Maroon">pysort</font>
+
 Sort.
 
-```
+```shell
 $ cat tmp.txt
 0 39
 31 2
@@ -467,10 +487,12 @@ $ cat tmp.txt | pysort -k 1 0 -n -i
 ```
 
 <br>
-###<font color="Maroon">pywhile</font>
+
+#### <font color="Maroon">pywhile</font>
+
 While commands.
 
-```
+```shell
 $ ls 
 README.md
 T.py
