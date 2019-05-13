@@ -10,28 +10,29 @@ Note:
         make symbolic links for all commands.
 '''
 
-scripts = ['T.py',
-           'add.py',
-           'pycolumn.py',
-           'corr.py',
-           'pyjoin.py',
-           'line.py',
-           'max.py',
-           'mean.py',
-           'min.py',
-           'pysort.py',
-           'remove.py',
-           'replace.py',
-           'reverse.py',
-           'split.py',
-           'pysum.py',
-           'var.py',
-           'pywhile.py',
-           'count.py',
-           'pyif.py',
-           'pybin.py',
-           'color.py'
-          ]
+scripts \
+    = ['T.py',
+       'add.py',
+       'pycolumn.py',
+       'corr.py',
+       'pyjoin.py',
+       'pyline.py',
+       'max.py',
+       'mean.py',
+       'min.py',
+       'pysort.py',
+       'remove.py',
+       'replace.py',
+       'reverse.py',
+       'split.py',
+       'pysum.py',
+       'var.py',
+       'pywhile.py',
+       'count.py',
+       'pyif.py',
+       'pybin.py',
+       'color.py'
+      ]
 
 
 

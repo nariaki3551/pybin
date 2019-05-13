@@ -27,14 +27,14 @@ PATH=~/pybin:"$PATH"
 Essentially all commands are used through pipes.<br>
 Example,
 `cat file | reverse`<br><br>
-Some commands has options.  
+Some commands has options.
 Example, `cat file | line -l`
 
 <br>
 
 ## Simple explanation of commands
 
-###Text manipulation
+### Text manipulation
 #### <font color="Maroon">reverse</font>
 
 Reverse inputs.
@@ -49,13 +49,13 @@ main()
 $ cat aaa.py | reverse
 main()
     print('HELLO WORLD')
-def main():   
+def main():
 
 
-$ cat aaa.py | reverse -s 
+$ cat aaa.py | reverse -s
 main()
 print('HELLO WORLD')
-def main():   
+def main():
 ```
 <br>
 
@@ -260,8 +260,8 @@ dict py
 
 
 $ ls | split . | T
-README T column dict 
-md py py py 
+README T column dict
+md py py py
 
 
 $ ls | split . | T | column -a
@@ -300,7 +300,7 @@ f 2
 $ cat test.txt | pyif 'float(row[1]) >= 2'
 d 2
 e 3
-f 2 
+f 2
 ```
 
 <br>
@@ -320,8 +320,8 @@ $ cat test.txt
 $ cat test.txt | sum
 60.0
 
-$ cat test.txt | sum -i 
-60 
+$ cat test.txt | sum -i
+60
 
 
 $ cat test2.txt
@@ -334,7 +334,7 @@ $ cat test2.txt | sum
 error line: aaa
 60.0
 
-$ cat test2.txt | sum -f -i 
+$ cat test2.txt | sum -f -i
 60
 ```
 <br>
@@ -439,7 +439,7 @@ a b: 0.9525793444156803
 ```
 <br>
 
-###others
+### others
 #### <font color="Maroon">pysort</font>
 
 Sort.
@@ -493,13 +493,13 @@ $ cat tmp.txt | pysort -k 1 0 -n -i
 While commands.
 
 ```shell
-$ ls 
+$ ls
 README.md
 T.py
 column.py
 dict.py
 
-$ ls | pywhile wc 
+$ ls | pywhile wc
      436     801    4361 README.md
       34      83     655 T.py
       76     209    1905 column.py
@@ -516,7 +516,7 @@ $ ls | pywhile wc -l
 <br>
 <br>
 <br>
-##Specific example of commands
+## Specific example of commands
 Sort files by line number.
 
 ```
