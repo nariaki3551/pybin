@@ -7,12 +7,13 @@ from collections import defaultdict
 
 __doc__ = """
 Usage:
-    column [-l] [-a] number or splice
+    column [-l] [-a] [-at] number or splice
     column [-h | --help]
 
 Options:
     -l              Show column number.
-    -a              Arrange.
+    -a              Arrange (head).
+    -at             Arrange (tail).
     -h --help       Show this screen and exit.
 
 Note:
@@ -26,6 +27,7 @@ Note:
 
 COLUMN = False
 ARRANGE = False
+ARRANGE_TAIL = False
 
 def usage():
     print(__doc__)
@@ -35,12 +37,15 @@ def usage():
 def main(av):
     data = [ row.strip().split() for row in stdin.readlines() ]
 
-    if ARRANGE:
+    if ARRANGE or ARRANGE_TAIL:
         arr_dict = defaultdict(int)
         for elm in data:
             for col, el in enumerate(elm):
                 arr_dict[col] = max(arr_dict[col], len(el))
-        data[:] = [ ['{}{}'.format(el, ' '*(arr_dict[col]-len(el))) for col, el in enumerate(elm)] for elm in data]
+        if ARRANGE:
+            data[:] = [ ['{}{}'.format(el, ' '*(arr_dict[col]-len(el))) for col, el in enumerate(elm)] for elm in data]
+        else:
+            data[:] = [ ['{}{}'.format(' '*(arr_dict[col]-len(el)), el) for col, el in enumerate(elm)] for elm in data]
 
     if COLUMN:
         data = [ ['[{}] {}'.format(col, el) for col, el in enumerate(elm)] for elm in data]
@@ -77,9 +82,12 @@ if __name__ == '__main__':
         if v in ['-a']:
             ARRANGE = True
             argv.remove('-a')
+        if v in ['-at']:
+            ARRANGE_TAIL = True
+            argv.remove('-at')
     if len(argv) == 2:
         main(av=argv[1])
-    elif COLUMN or ARRANGE:
+    elif COLUMN or ARRANGE or ARRANGE_TAIL:
         main(av=None)
     else:
         usage()
