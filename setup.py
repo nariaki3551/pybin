@@ -6,7 +6,7 @@ Usage:
         python3 setup.py
 
 Note:
-        install python packaage
+        install python packaage and
         make symbolic links for all commands.
 '''
 

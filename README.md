@@ -9,7 +9,7 @@ Type following in where you want to save `pybin`.
 
 ```
 git clone https://github.com/nariaki3551/pybin.git
-cd ~/pybin
+cd pybin
 python3 setup.py
 ```
 
@@ -17,7 +17,7 @@ Then, add following in `~/.bash_profile` or other appropriate file.
 
 ```
 # Setting PATH for pybin
-PATH=~/pybin:"$PATH"
+PATH=(path of pybin):"$PATH"
 ```
 
 
@@ -25,17 +25,17 @@ PATH=~/pybin:"$PATH"
 ## How to use
 
 Essentially all commands are used through pipes.<br>
-Example,
-`cat file | reverse`<br><br>
-Some commands has options.
-Example, `cat file | line -l`
+`cat file | reverse`<br>
+
+Some commands has options.<br>
+`cat file | line -l`
 
 <br>
 
 ## Simple explanation of commands
 
 ### Text manipulation
-#### <font color="Maroon">reverse</font>
+#### reverse
 
 Reverse inputs.
 
@@ -59,7 +59,7 @@ def main():
 ```
 <br>
 
-#### <font color="Maroon">split</font>
+#### split
 
 Split the specified char.
 
@@ -87,7 +87,7 @@ di ct.py
 
 <br>
 
-#### <font color="Maroon">line</font>
+#### pyline
 
 Operations on rows.
 
@@ -97,21 +97,21 @@ aaa
 bbb
 ccc
 
-cat sample.txt | line -l
+cat sample.txt | pyline -l
 [0] aaa
 [1] bbb
 [2] CCC
 
-cat sample.txt | line 1
+cat sample.txt | pyline 1
 bbb
 
-cat sample.txt | line :-1
+cat sample.txt | pyline :-1
 aaa
 bbb
 ```
 <br>
 
-#### <font color="Maroon">pycolumn</font>
+#### pycolumn
 
 Operations on columns.
 
@@ -154,7 +154,7 @@ dict py
 
 <br>
 
-#### <font color="Maroon">remove</font>
+#### remove
 
 Remove specified char.
 
@@ -174,7 +174,7 @@ dict.
 ```
 
 <br>
-#### <font color="Maroon">replace</font>
+#### replace
 
 Replace charA to charB.
 
@@ -194,7 +194,7 @@ dict2py
 ```
 <br>
 
-#### <font color="Maroon">add</font>
+#### add
 
 Attach char in head or tail.
 
@@ -228,7 +228,7 @@ $ ls | add -a -n 0
 
 <br>
 
-#### <font color="Maroon">join</font>
+#### join
 
 Join.
 
@@ -247,7 +247,7 @@ column3py
 dict3py
 ```
 <br>
-#### <font color="Maroon">T</font>
+#### T
 
 Swap rows and columns.
 
@@ -270,7 +270,7 @@ md     py py     py
 ```
 
 <br>
-#### <font color="Maroon">count</font>
+#### count
 
 ```shell
 $ cat test.txt
@@ -286,7 +286,7 @@ $ cat test.txt | count
 2: 2
 ```
 <br>
-#### <font color="Maroon">pyif</font>
+#### pyif
 
 ```shell
 $ cat test.txt
@@ -307,7 +307,7 @@ f 2
 
 ### statistics
 
-#### <font color="Maroon">sum</font>
+#### sum
 
 Calculate total sum.
 
@@ -339,7 +339,7 @@ $ cat test2.txt | sum -f -i
 ```
 <br>
 
-#### <font color="Maroon">max</font>
+#### max
 
 Find max element.
 
@@ -356,7 +356,7 @@ $ cat test.txt | max -i
 30
 ```
 <br>
-#### <font color="Maroon">min</font>
+#### min
 
 Find min element.
 
@@ -374,7 +374,7 @@ $ cat test.txt | min -i
 ```
 
 <br>
-#### <font color="Maroon">mean</font>
+#### mean
 
 Calculate mean.
 
@@ -389,7 +389,7 @@ $ cat test.txt | mean
 ```
 <br>
 
-#### <font color="Maroon">var</font>
+#### var
 
 Calculate variance.
 
@@ -408,7 +408,7 @@ $ cat test.txt | var -d 1
 
 <br>
 
-#### <font color="Maroon">corr</font>
+#### corr
 
 Calculate correlation coefficient.
 
@@ -440,7 +440,7 @@ a b: 0.9525793444156803
 <br>
 
 ### others
-#### <font color="Maroon">pysort</font>
+#### pysort
 
 Sort.
 
@@ -488,7 +488,7 @@ $ cat tmp.txt | pysort -k 1 0 -n -i
 
 <br>
 
-#### <font color="Maroon">pywhile</font>
+#### pywhile
 
 While commands.
 
@@ -526,5 +526,6 @@ ls | pywhile wc -l | pysort -k 0 -n
 Kill all jobs.
 
 ```
-jobs -ls | column 1 | pywhile kill
+jobs -ls | pycolumn 1 | pywhile kill
 ```
+
