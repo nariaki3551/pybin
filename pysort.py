@@ -8,9 +8,9 @@ Usage:
     pysort [-h | --help]
 Options:
     -r --reverse    Reverse.
-    -k --key        
-    -n 
-    -i 
+    -k --key
+    -n
+    -i
     -h --help       Show this screen and exit.
 Note:
     標準入力をsortする.

@@ -5,8 +5,8 @@ from itertools import combinations
 
 __doc__ = """
 Usage:
-    corr [-p | --parametor] [-a | --all] int int (int is line number)
-    corr [-h | --help]
+    pycorr [-p | --parametor] [-a | --all] int int (int is line number)
+    pycorr [-h | --help]
 
 Options:
     -p              Show parametor.

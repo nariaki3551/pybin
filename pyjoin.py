@@ -3,8 +3,8 @@ from sys import stdin, argv
 
 __doc__ = """
 Usage:
-    join [-s] char
-    join [-h | --help]
+    pyjoin [-s] char
+    pyjoin [-h | --help]
 
 Options:
     -s            Strip lines.

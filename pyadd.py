@@ -6,9 +6,9 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    add [-a] [-e] str
-    add [-n] start_number
-    add [-h | --help]
+    pyadd [-a] [-e] str
+    pyadd [-n] start_number
+    pyadd [-h | --help]
 
 Options:
     -a              Add str in head.
@@ -19,8 +19,8 @@ Options:
 Note:
     入力文字列にstrを追加する
     ex)
-        ls | add -a \'
-        ls | add -e -n 0
+        ls | pyadd -a \'
+        ls | pyadd -e -n 0
 """
 
 HEAD = False

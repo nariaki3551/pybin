@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import subprocess as sp
+from sys import argv
 
 __doc__='''
 Usage:
-        python3 setup.py
+        python3 setup.py [--reset]
 
 Note:
         install python packaage and
@@ -12,29 +13,28 @@ Note:
 
 scripts \
     = ['T.py',
-       'add.py',
+       'pyadd.py',
        'pycolumn.py',
-       'corr.py',
+       'pycorr.py',
        'pyjoin.py',
        'pyline.py',
-       'max.py',
-       'mean.py',
-       'min.py',
+       'pymax.py',
+       'pymean.py',
+       'pymin.py',
+       'pydiv.py',
        'pysort.py',
-       'remove.py',
-       'replace.py',
-       'reverse.py',
-       'split.py',
+       'pyremove.py',
+       'pyreplace.py',
+       'pyreverse.py',
+       'pysplit.py',
        'pysum.py',
-       'var.py',
+       'pyvar.py',
        'pywhile.py',
-       'count.py',
+       'pycount.py',
        'pyif.py',
        'pybin.py',
-       'color.py'
+       'pycolor.py'
       ]
-
-
 
 def main():
     try:
@@ -54,6 +54,13 @@ def main():
 
     print('\n🍣  ALL COMPLATE')
 
+def reset():
+    for file in scripts:
+        print('unlink {}'.format(file.replace('.py', '')))
+        sp.getoutput('unlink {}'.format(file.replace('.py', '')))    
 
 if __name__ == '__main__':
-    main()
+    if '--reset' in argv:
+      reset()
+    else:
+      main()

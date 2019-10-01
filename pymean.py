@@ -4,8 +4,8 @@ from numpy import mean
 
 __doc__ = """
 Usage:
-    mean [-f] [-i]
-    mean [-h | --help]
+    pymean [-f] [-i]
+    pymean [-h | --help]
 
 Options:
     -f              Don't show error message.
@@ -37,7 +37,7 @@ def main():
                 pass
             else:
                 print('error line: {}'.format(row))
-                
+
     if FLOAT2INT:
         print(_sum//num_data)
     else:

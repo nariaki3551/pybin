@@ -3,8 +3,8 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	remove [-s] str
-	remove [-h | --help]
+	pyremove [-s] str
+	pyremove [-h | --help]
 
 Options:
     -s            Strip lines.
@@ -13,7 +13,7 @@ Options:
 Note:
 	入力文字列からstrを取り除く
 	ex)
-	    ls | remove .py
+	    ls | pyremove .py
 """
 
 STRIP = False

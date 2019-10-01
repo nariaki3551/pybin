@@ -3,8 +3,8 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    sum [-f] [-i]
-    sum [-h | --help]
+    pysum [-f] [-i]
+    pysum [-h | --help]
 
 Options:
     -f              Don't show error message.
@@ -34,7 +34,7 @@ def main():
                 pass
             else:
                 print('error line: {}'.format(row))
-                
+
     if FLOAT2INT:
         print(int(_sum))
     else:

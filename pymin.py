@@ -3,8 +3,8 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    min [-f] [-i]
-    min [-h | --help]
+    pymin [-f] [-i]
+    pymin [-h | --help]
 
 Options:
     -f              Don't show error message.

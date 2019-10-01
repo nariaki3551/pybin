@@ -3,17 +3,17 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    replace [-s] strA strB 
-    replace [-h | --help]
+    pyreplace [-s] strA strB
+    pyreplace [-h | --help]
 
 Options:
-    -s            Strip lines.  
+    -s            Strip lines.
     -h --help     Show this screen and exit.
 
 Note:
     入力文字列のstrAをstrBに置き換える
     ex)
-        replace .py .java
+        pyreplace .py .java
 """
 
 STRIP = False

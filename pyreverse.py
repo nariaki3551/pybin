@@ -3,17 +3,16 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    reverse [-s]
-    reverse [-h | --help]
+    pyreverse [-s]
+    pyreverse [-h | --help]
 
 Options:
     -s              Strip lines.
     -h --help       Show this screen and exit.
 
 Note:
-    逆順表示
     ex)
-        cat file | reverse
+        cat file | pyreverse
 """
 
 STRIP = False

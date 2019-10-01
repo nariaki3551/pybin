@@ -3,20 +3,20 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    split [-s] char
-    split [-s] [-n] number
-    split [-h | --help]
+    pysplit [-s] char
+    pysplit [-s] [-n] number
+    pysplit [-h | --help]
 
 Options:
     -s            Strip lines.
-    -n <number>   numberでstripする。  
+    -n <number>   numberでstripする。
     -h --help     Show this screen and exit.
 
 Note:
     標準入力をsplitする。
     ex)
-        abc.py | split .     ->  abc py
-        abc.py | split -n 2  ->  ab c.py
+        abc.py | pysplit .     ->  abc py
+        abc.py | pysplit -n 2  ->  ab c.py
 """
 
 STRIP = False
@@ -32,7 +32,7 @@ def main(key):
             row = row.strip()
         else:
             row = row.replace('\n', '')
-            
+
         if NUMBER:
             key = int(key)
             try: row = [row[:key], row[key:]]

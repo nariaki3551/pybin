@@ -1,44 +1,45 @@
 #!/usr/local/bin/python3
 from sys import argv, stdin
-from numpy import var
 
 __doc__ = """
 Usage:
-    var [-f] 
-    var [-d | --ddof] 0 or 1
-    var [-h | --help]
+    pymax [-f] [-i]
+    pymax [-h | --help]
 
 Options:
     -f              Don't show error message.
-    -d --ddof       Select Specimen(0) or Unbiased(1). Default is Specimen.
+    -i              Convert result to int.
     -h --help       Show this screen and exit.
 
 Note:
-    標準入力の数字の分散を出力する.
+    標準入力の数字の最大値を出力する.
     標準入力が数字以外の場合、その行を飛ばす.
-    -d 0 で標本分散, -d 1で不偏分散を計算.
 """
 
 FORCE = False
-DDOF = False
+FLOAT2INT = False
 
 def usage():
     print(__doc__)
     exit()
 
-def main(ddof):
+def main():
     data = list()
+    _max = -float('inf')
     for row in stdin.readlines():
         row = row.strip()
         try:
-            data.append(float(row))
+            _max = max(_max, float(row))
         except:
             if FORCE:
                 pass
             else:
                 print('error line: {}'.format(row))
-    
-    print(var(data, ddof=ddof))
+
+    if FLOAT2INT:
+        print(int(_max))
+    else:
+        print(_max)
 
 if __name__ == '__main__':
     for v in argv[1:]:
@@ -46,15 +47,6 @@ if __name__ == '__main__':
             usage()
         if v in ['-f']:
             FORCE = True
-            argv.remove(v)
-        if v in ['-d', '--ddof']:
-            DDOF = True
-            argv.remove(v)
-    if DDOF and len(argv) == 2:
-        main(ddof=int(argv[1]))
-    elif not DDOF:
-        main(ddof=0)
-    else:
-        usage()
-
-
+        if v in ['-i']:
+            FLOAT2INT = True
+    main()

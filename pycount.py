@@ -4,7 +4,7 @@ from collections import Counter
 
 __doc__ = """
 Usage:
-    count [-h | --help]
+    pycount [-h | --help]
 
 Options:
     -h --help       Show this screen and exit.

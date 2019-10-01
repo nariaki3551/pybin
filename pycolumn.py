@@ -7,8 +7,8 @@ from collections import defaultdict
 
 __doc__ = """
 Usage:
-    column [-l] [-a] [-at] number or splice
-    column [-h | --help]
+    pycolumn [-l] [-a] [-at] number or splice
+    pycolumn [-h | --help]
 
 Options:
     -l              Show column number.
@@ -17,12 +17,12 @@ Options:
     -h --help       Show this screen and exit.
 
 Note:
-    column [number] でnumber+1列目を表示.
+    pycolumn [number] でnumber+1列目を表示.
     スライスの入力はpython記法に準ずる.
     ex)
-        cat file | column 3
-        cat file | column 4:-1
-        cat file | column 1\|4\|8: (1, 4行目と8行目以降を表示)
+        cat file | pycolumn 3
+        cat file | pycolumn 4:-1
+        cat file | pycolumn 1\|4\|8: (1, 4行目と8行目以降を表示)
 """
 
 COLUMN = False

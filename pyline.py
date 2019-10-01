@@ -3,11 +3,11 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-	line [-l] [-v] [-s] number or splice
-	line [-h | --help]
+	pyline [-l] [-v] [-s] number or splice
+	pyline [-h | --help]
 
 Options:
-	-s            Strip lines.  
+	-s            Strip lines.
 	-l            Show line number.
 	-v            Show invert lines.
 	-h --help     Show this screen and exit.
@@ -16,8 +16,8 @@ Note:
 	line [number] でnumber+1行目を表示.
 	スライスの入力はpython記法に準ずる.
 	ex)
-		cat file | line 3
-		cat file | line 4:-1
+		cat file | pyline 3
+		cat file | pyline 4:-1
 """
 
 LINE = False
@@ -55,7 +55,7 @@ def main(av):
 	else:
 		try: tmp_data = eval('data[{}]'.format(av))
 		except: usage()
-		
+
 		if INVERT:
 			for elm in data:
 				if elm not in tmp_data:
