@@ -20,22 +20,24 @@ Then, add following in `~/.bash_profile` or other appropriate file.
 PATH=(path of pybin):"$PATH"
 ```
 
-
 <br>
+
+
+
 ## How to use
 
 Essentially all commands are used through pipes.<br>
 `cat file | reverse`<br>
 
 Some commands has options.<br>
-`cat file | line -l`
+`cat file | pyline -l`
 
 <br>
 
 ## Simple explanation of commands
 
 ### Text manipulation
-#### reverse
+#### pyreverse
 
 Reverse inputs.
 
@@ -46,13 +48,13 @@ def main():
 main()
 
 
-$ cat aaa.py | reverse
+$ cat aaa.py | pyreverse
 main()
     print('HELLO WORLD')
 def main():
 
 
-$ cat aaa.py | reverse -s
+$ cat aaa.py | pyreverse -s
 main()
 print('HELLO WORLD')
 def main():
@@ -71,14 +73,14 @@ column.py
 dict.py
 
 
-$ ls | split .
+$ ls | pysplit .
 README md
 T py
 column py
 dict py
 
 
-$ ls | split -n 2
+$ ls | pysplit -n 2
 RE ADME.md
 T. py
 co lumn.py
@@ -154,7 +156,7 @@ dict py
 
 <br>
 
-#### remove
+#### pyremove
 
 Remove specified char.
 
@@ -166,7 +168,7 @@ column.py
 dict.py
 
 
-$ ls | remove py
+$ ls | pyremove py
 README.md
 T.
 column.
@@ -174,7 +176,7 @@ dict.
 ```
 
 <br>
-#### replace
+#### pyreplace
 
 Replace charA to charB.
 
@@ -186,7 +188,7 @@ column.py
 dict.py
 
 
-$ ls | replace . 2
+$ ls | pyreplace . 2
 README2md
 T2py
 column2py
@@ -194,7 +196,7 @@ dict2py
 ```
 <br>
 
-#### add
+#### pyadd
 
 Attach char in head or tail.
 
@@ -206,20 +208,20 @@ column.py
 dict.py
 
 
-$ ls | add -a test_
+$ ls | pyadd -a test_
 test_README.md
 test_T.py
 test_column.py
 test_dict.py
 
 
-$ ls | add -a -e \'
+$ ls | pyadd -a -e \'
 'README.md'
 'T.py'
 'column.py'
 'dict.py'
 
-$ ls | add -a -n 0
+$ ls | pyadd -a -n 0
 0README.md
 1T.py
 2column.py
@@ -228,7 +230,7 @@ $ ls | add -a -n 0
 
 <br>
 
-#### join
+#### pyjoin
 
 Join.
 
@@ -240,7 +242,7 @@ column py
 dict py
 
 
-$ ls | split . | join 3
+$ ls | split . | pyjoin 3
 README3md
 T3py
 column3py
@@ -270,7 +272,7 @@ md     py py     py
 ```
 
 <br>
-#### count
+#### pycount
 
 ```shell
 $ cat test.txt
@@ -280,7 +282,7 @@ $ cat test.txt
 1
 2
 
-$ cat test.txt | count
+$ cat test.txt | pycount
 3: 1
 1: 2
 2: 2
@@ -307,7 +309,7 @@ f 2
 
 ### statistics
 
-#### sum
+#### pysum
 
 Calculate total sum.
 
@@ -317,10 +319,10 @@ $ cat test.txt
 20
 30
 
-$ cat test.txt | sum
+$ cat test.txt | pysum
 60.0
 
-$ cat test.txt | sum -i
+$ cat test.txt | pysum -i
 60
 
 
@@ -330,16 +332,16 @@ $ cat test2.txt
 30
 aaa
 
-$ cat test2.txt | sum
+$ cat test2.txt | pysum
 error line: aaa
 60.0
 
-$ cat test2.txt | sum -f -i
+$ cat test2.txt | pysum -f -i
 60
 ```
 <br>
 
-#### max
+#### pymax
 
 Find max element.
 
@@ -349,14 +351,14 @@ $ cat test.txt
 20
 30
 
-$ cat test.txt | max
+$ cat test.txt | pymax
 30.0
 
-$ cat test.txt | max -i
+$ cat test.txt | pymax -i
 30
 ```
 <br>
-#### min
+#### pymin
 
 Find min element.
 
@@ -366,15 +368,15 @@ $ cat test.txt
 20
 30
 
-$ cat test.txt | min
+$ cat test.txt | pymin
 10.0
 
-$ cat test.txt | min -i
+$ cat test.txt | pymin -i
 10
 ```
 
 <br>
-#### mean
+#### pymean
 
 Calculate mean.
 
@@ -384,12 +386,12 @@ $ cat test.txt
 20
 30
 
-$ cat test.txt | mean
+$ cat test.txt | pymean
 20.0
 ```
 <br>
 
-#### var
+#### pyvar
 
 Calculate variance.
 
@@ -399,10 +401,10 @@ $ cat test.txt
 20
 30
 
-$ cat test.txt | var -d 0
+$ cat test.txt | pyvar -d 0
 66.6666666667
 
-$ cat test.txt | var -d 1
+$ cat test.txt | pyvar -d 1
 100.0
 ```
 
@@ -422,17 +424,17 @@ a b c
 4 5 3
 
 
-$ cat tmp.txt | split , | corr -p 0 1
+$ cat tmp.txt | split , | pycorr -p 0 1
 a b: 0.9525793444156803
 
 
-$ cat tmp.txt | split , | corr -p -a
+$ cat tmp.txt | split , | pycorr -p -a
 a b: 0.9525793444156803
 a c: -0.7472647177570733
 b c: -0.7844645405527361
 
 
-$ cat tmp.txt | split , | corr -p -a | pysort -k 2 -n
+$ cat tmp.txt | split , | pycorr -p -a | pysort -k 2 -n
 b c: -0.7844645405527361
 a c: -0.7472647177570733
 a b: 0.9525793444156803
