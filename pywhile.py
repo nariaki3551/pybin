@@ -11,6 +11,7 @@ Usage:
 Options:
     -h --help     Show this screen and exit.
     -p --parallel Run parallel
+    -q --quiet    Quiet display command
 
 Note:
     COMMADN 標準入力を次々と実行
@@ -22,6 +23,7 @@ Note:
 """
 
 PARALLEL = False
+QUIET = False
 
 def usage():
     print(__doc__)
@@ -40,14 +42,20 @@ def gen_command(com, line):
     return command
 
 
+def run(command):
+    if not QUIET:
+        print(' '.join(command))
+    sp.run(command)
+
+
 def main(com):
     if not PARALLEL:
         for line in stdin.readlines():
-            sp.run(gen_command(com, line))
+            run(gen_command(com, line))
     else:
         commands = [gen_command(com, line) for line in stdin.readlines()]
         with Pool(processes=None) as pool:
-            pool.map(sp.run, commands)
+            pool.map(run, commands)
 
 
 if __name__ == '__main__':
@@ -56,6 +64,9 @@ if __name__ == '__main__':
             usage()
         if v in ['-p', '--parallel']:
             PARALLEL = True
+            argv.remove(v)
+        if v in ['-q', '--quiet']:
+            QUIET = True
             argv.remove(v)
     if len(argv) != 1:
         main(com=argv[1:])
