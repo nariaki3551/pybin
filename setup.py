@@ -40,7 +40,7 @@ def main():
     try:
       # install python package
       sp.run(['pip3', 'install', 'numpy'])
-      sp.run(['pip3', 'install', 'fabric'])
+      sp.run(['pip3', 'install', 'fabric3'])
 
 
       # make symbolic links
