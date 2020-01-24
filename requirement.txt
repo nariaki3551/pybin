@@ -1,0 +1,2 @@
+numpy
+fabric3
