@@ -11,8 +11,7 @@ scripts = [
     'pydiv.py',     'pysort.py',    'pyremove.py',
     'pyreplace.py', 'pyreverse.py', 'pysplit.py',
     'pysum.py',     'pyvar.py',     'pywhile.py',
-    'pycount.py',   'pyif.py',      'pybin.py',
-    'pycolor.py'
+    'pycount.py',   'pybin.py',     'pycolor.py'
 ]
 
 
@@ -47,8 +46,9 @@ def make_symbolic(args):
         'make symbolic in ./bin directory,',
         '',
         'please write in your ~/.bash_profile, ~/.bashrc or ~/.zshrc',
+        '  or other appropriate file.',
         '',
-        '    export PATH={}:${{PATH}}'.format(os.getcwd()),
+        '    export PATH={}/bin:${{PATH}}'.format(os.getcwd()),
         ''
     ]
     print('\n'.join(description))

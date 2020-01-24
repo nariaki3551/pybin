@@ -1,5 +1,5 @@
 # pybin
-Original linux commands by python.
+Original linux commands coded by python.
 
 <br>
 
@@ -10,24 +10,24 @@ Type following in where you want to save `pybin`.
 ```
 git clone https://github.com/nariaki3551/pybin.git
 cd pybin
+pip3 install -r requirement.txt
 python3 setup.py
 ```
 
-Then, add following in `~/.bash_profile` or other appropriate file.
+Then, add following in `~/.bash_profile`, `~/.bashrc`, `~/.zshrc` or other appropriate file.
 
 ```
-# Setting PATH for pybin
-PATH=(path of pybin):"$PATH"
+export PATH=xxx/pybin/bin:${PATH}
 ```
+
+This is displayed when you run  `python3 setup.py`.
 
 <br>
-
-
 
 ## How to use
 
 Essentially all commands are used through pipes.<br>
-`cat file | reverse`<br>
+`cat file | pyreverse`<br>
 
 Some commands has options.<br>
 `cat file | pyline -l`
@@ -61,7 +61,7 @@ def main():
 ```
 <br>
 
-#### split
+#### pysplit
 
 Split the specified char.
 
@@ -118,35 +118,35 @@ bbb
 Operations on columns.
 
 ```shell
-$ ls | split .
+$ ls | pysplit .
 README md
 T py
 column py
 dict py
 
 
-$ ls | split . | pycolumn -l
+$ ls | pysplit . | pycolumn -l
 [0] README [1] md
 [0] T [1] py
 [0] column [1] py
 [0] dict [1] py
 
 
-$ ls | split . | pycolumn -l -a
+$ ls | pysplit . | pycolumn -l -a
 [0] README [1] md
 [0] T      [1] py
 [0] column [1] py
 [0] dict   [1] py
 
 
-$ ls | split . | pycolumn 0
+$ ls | pysplit . | pycolumn 0
 REAME
 T
 column
 dict
 
 
-$ ls | split . | pycolumn 0\|1
+$ ls | pysplit . | pycolumn 0\|1
 README md
 T py
 column py
@@ -288,25 +288,6 @@ $ cat test.txt | pycount
 2: 2
 ```
 <br>
-#### pyif
-
-```shell
-$ cat test.txt
-a 1
-b 1
-c 1
-d 2
-e 3
-f 2
-
-$ cat test.txt | pyif 'float(row[1]) >= 2'
-d 2
-e 3
-f 2
-```
-
-<br>
-
 ### statistics
 
 #### pysum
@@ -410,12 +391,12 @@ $ cat test.txt | pyvar -d 1
 
 <br>
 
-#### corr
+#### pycorr
 
 Calculate correlation coefficient.
 
 ```shell 
-$ cat tmp.txt | split ,
+$ cat tmp.txt | pysplit ,
 a b c
 1 3 4
 1 2 3
@@ -424,17 +405,17 @@ a b c
 4 5 3
 
 
-$ cat tmp.txt | split , | pycorr -p 0 1
+$ cat tmp.txt | pysplit , | pycorr -p 0 1
 a b: 0.9525793444156803
 
 
-$ cat tmp.txt | split , | pycorr -p -a
+$ cat tmp.txt | pysplit , | pycorr -p -a
 a b: 0.9525793444156803
 a c: -0.7472647177570733
 b c: -0.7844645405527361
 
 
-$ cat tmp.txt | split , | pycorr -p -a | pysort -k 2 -n
+$ cat tmp.txt | pysplit , | pycorr -p -a | pysort -k 2 -n
 b c: -0.7844645405527361
 a c: -0.7472647177570733
 a b: 0.9525793444156803

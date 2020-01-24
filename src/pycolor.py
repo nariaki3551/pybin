@@ -3,21 +3,21 @@ from sys import argv, stdin
 
 __doc__ = """
 Usage:
-    color [color] char -nb
-    color [-h | --help]
+    pycolor [color] char -nb
+    pycolor [-h | --help]
 
 Options:
-    -nb          not bold print   
+    -nb          not bold print
     -h --help    Show this screen and exit.
 
 Note:
     色付き表示
-    blue, cyan , green, magenta 
+    blue, cyan , green, magenta
     red, white, yellow
-    
+
     ex)
-    cat file | color import
-    cat file | color red import | color blue from -nb
+    cat file | pycolor import
+    cat file | pycolor red import | pycolor blue from -nb
 """
 
 def usage():
