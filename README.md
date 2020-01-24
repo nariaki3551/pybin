@@ -34,60 +34,35 @@ Some commands has options.<br>
 
 <br>
 
+## Commands
+
++ Text manipulation
+  + pyline
+  + pycolumn
+  + T
+  + pysplit
+  + pyjoin
+  + pyreplace
+  + pyremove
+  + pyadd
+  + pycount
+  + pyreverse
++ statistics
+  + pysum
+  + pymax
+  + pymin
+  + pymean
+  + pyvar
+  + pycorr
++ other
+  + pysort
+  + pywhile
+
+<br>
+
 ## Simple explanation of commands
 
 ### Text manipulation
-#### pyreverse
-
-Reverse inputs.
-
-```bash
-$ cat aaa.py
-def main():
-    print('HELLO WORLD')
-main()
-
-
-$ cat aaa.py | pyreverse
-main()
-    print('HELLO WORLD')
-def main():
-
-
-$ cat aaa.py | pyreverse -s
-main()
-print('HELLO WORLD')
-def main():
-```
-<br>
-
-#### pysplit
-
-Split the specified char.
-
-```shell
-$ ls
-README.md
-T.py
-column.py
-dict.py
-
-
-$ ls | pysplit .
-README md
-T py
-column py
-dict py
-
-
-$ ls | pysplit -n 2
-RE ADME.md
-T. py
-co lumn.py
-di ct.py
-```
-
-<br>
 
 #### pyline
 
@@ -111,6 +86,7 @@ cat sample.txt | pyline :-1
 aaa
 bbb
 ```
+
 <br>
 
 #### pycolumn
@@ -156,6 +132,100 @@ dict py
 
 <br>
 
+#### T
+
+Swap rows and columns.
+
+```shell
+$ ls | split .
+README md
+T py
+column py
+dict py
+
+
+$ ls | split . | T
+README T column dict
+md py py py
+
+
+$ ls | split . | T | column -a
+README T  column dict
+md     py py     py
+```
+
+<br>
+
+#### pysplit
+
+Split the specified char.
+
+```shell
+$ ls
+README.md
+T.py
+column.py
+dict.py
+
+
+$ ls | pysplit .
+README md
+T py
+column py
+dict py
+
+
+$ ls | pysplit -n 2
+RE ADME.md
+T. py
+co lumn.py
+di ct.py
+```
+
+<br>
+
+#### pyjoin
+
+Join.
+
+```shell
+$ ls | split .
+README md
+T py
+column py
+dict py
+
+
+$ ls | split . | pyjoin 3
+README3md
+T3py
+column3py
+dict3py
+```
+
+<br>
+
+#### pyreplace
+
+Replace charA to charB.
+
+```shell
+$ ls
+README.md
+T.py
+column.py
+dict.py
+
+
+$ ls | pyreplace . 2
+README2md
+T2py
+column2py
+dict2py
+```
+
+<br>
+
 #### pyremove
 
 Remove specified char.
@@ -175,25 +245,6 @@ column.
 dict.
 ```
 
-<br>
-#### pyreplace
-
-Replace charA to charB.
-
-```shell
-$ ls
-README.md
-T.py
-column.py
-dict.py
-
-
-$ ls | pyreplace . 2
-README2md
-T2py
-column2py
-dict2py
-```
 <br>
 
 #### pyadd
@@ -230,48 +281,6 @@ $ ls | pyadd -a -n 0
 
 <br>
 
-#### pyjoin
-
-Join.
-
-```shell
-$ ls | split .
-README md
-T py
-column py
-dict py
-
-
-$ ls | split . | pyjoin 3
-README3md
-T3py
-column3py
-dict3py
-```
-<br>
-#### T
-
-Swap rows and columns.
-
-```shell
-$ ls | split .
-README md
-T py
-column py
-dict py
-
-
-$ ls | split . | T
-README T column dict
-md py py py
-
-
-$ ls | split . | T | column -a
-README T  column dict
-md     py py     py
-```
-
-<br>
 #### pycount
 
 ```shell
@@ -288,6 +297,32 @@ $ cat test.txt | pycount
 2: 2
 ```
 <br>
+
+#### pyreverse
+
+Reverse inputs.
+
+```bash
+$ cat aaa.py
+def main():
+    print('HELLO WORLD')
+main()
+
+
+$ cat aaa.py | pyreverse
+main()
+    print('HELLO WORLD')
+def main():
+
+
+$ cat aaa.py | pyreverse -s
+main()
+print('HELLO WORLD')
+def main():
+```
+
+<br>
+
 ### statistics
 
 #### pysum
