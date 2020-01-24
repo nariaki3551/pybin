@@ -7,10 +7,10 @@ scripts = [
     'T',         'pyadd',     'pycolumn',
     'pycorr',    'pyjoin',    'pyline',
     'pymax',     'pymean',    'pymin',
-    'pydiv',     'pysort',    'pyremove',
-    'pyreplace', 'pyreverse', 'pysplit',
-    'pysum',     'pyvar',     'pywhile',
-    'pycount',   'pybin',     'pycolor'
+    'pysort',    'pyremove',  'pyreplace',
+    'pyreverse', 'pysplit',   'pysum',
+    'pyvar',     'pywhile',   'pycount',
+    'pycolor'
 ]
 
 
@@ -21,12 +21,16 @@ def main(args):
 
 
 def rewrite_shebang(args):
-    shebang = '#!'+args.python_path
+    shebang = '#!'+args.python_path+'\n'
     print('\nshebang:', shebang)
     for pyfile in scripts:
         bin_path = BIN_DIR + '/' + pyfile
-        sp.getoutput("sed '1d' " + bin_path)
-        sp.getoutput("sed -i '{}' {}".format(shebang, bin_path))
+        lines = list(open(bin_path, 'r'))
+        lines[0] = shebang
+        sp.getoutput('rm ' + bin_path)
+        with open(bin_path, 'w') as f:
+            for line in lines:
+                f.write(line)
 
 
 def add_permission(args):
