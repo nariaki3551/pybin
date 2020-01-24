@@ -51,29 +51,17 @@ def disp_message(args):
     print('\n'.join(message))
 
 
-def clean():
-    for pyfile in scripts:
-        name = pyfile.replace('.py', '')
-        bin_path = BIN_DIR + '/' + name
-        print('unlink {}'.format(bin_path))
-        sp.getoutput('unlink {}'.format(bin_path))
-
-
 def argparser():
     description='make symbolic links for all commands'
     parser = argparse.ArgumentParser(
         prog=__file__,
-        description=description
+        description=description,
+        add_help=True
     )
     parser.add_argument(
         '--python_path',
         default=sp.getoutput('which python3'),
         help='python path you use (default: which python3)'
-    )
-    parser.add_argument(
-        '--clean',
-        action='store_true',
-        help='clear binary files'
     )
     return parser
 
@@ -82,7 +70,4 @@ if __name__ == '__main__':
     parser = argparser()
     args = parser.parse_args()
 
-    if args.clean:
-        clean()
-    else:
-        main(args)
+    main(args)
