@@ -2,47 +2,44 @@ import os
 import argparse
 import subprocess as sp
 
-SRC_DIR = './src'
 BIN_DIR = './bin'
 scripts = [
-    'T.py',         'pyadd.py',     'pycolumn.py',
-    'pycorr.py',    'pyjoin.py',    'pyline.py',
-    'pymax.py',     'pymean.py',    'pymin.py',
-    'pydiv.py',     'pysort.py',    'pyremove.py',
-    'pyreplace.py', 'pyreverse.py', 'pysplit.py',
-    'pysum.py',     'pyvar.py',     'pywhile.py',
-    'pycount.py',   'pybin.py',     'pycolor.py'
+    'T',         'pyadd',     'pycolumn',
+    'pycorr',    'pyjoin',    'pyline',
+    'pymax',     'pymean',    'pymin',
+    'pydiv',     'pysort',    'pyremove',
+    'pyreplace', 'pyreverse', 'pysplit',
+    'pysum',     'pyvar',     'pywhile',
+    'pycount',   'pybin',     'pycolor'
 ]
 
 
 def main(args):
     rewrite_shebang(args)
-    make_symbolic(args)
+    add_permission(args)
+    disp_message(args)
 
 
 def rewrite_shebang(args):
     shebang = '#!'+args.python_path
     print('shebang:', shebang)
     for pyfile in scripts:
-        pyfile_path = SRC_DIR + '/' + pyfile
-        sp.getoutput("sed '1d' " + pyfile_path)
-        sp.getoutput("sed -i '{}' {}".format(shebang, pyfile_path))
+        bin_path = BIN_DIR + '/' + pyfile
+        sp.getoutput("sed '1d' " + bin_path)
+        sp.getoutput("sed -i '{}' {}".format(shebang, bin_path))
 
 
-def make_symbolic(args):
+def add_permission(args):
     # make symbolic links
     for pyfile in scripts:
-        name = pyfile.replace('.py', '')
-        pyfile_path = SRC_DIR + '/' + pyfile
-        bin_path = BIN_DIR + '/' + name
-        print('chmod +x {}'.format(pyfile_path))
-        sp.getoutput('chmod +x {}'.format(pyfile_path))
-        print('ln -s {} {}'.format(pyfile_path, bin_path))
-        sp.getoutput('ln -s {} {}'.format(pyfile_path, bin_path))
-
+        bin_path = BIN_DIR + '/' + pyfile
+        print('chmod +x {}'.format(bin_path))
+        sp.getoutput('chmod +x {}'.format(bin_path))
     print('\n🍣  ALL COMPLATE')
 
-    description = [
+
+def disp_message(args):
+    message = [
         'make symbolic in ./bin directory,',
         '',
         'please write in your ~/.bash_profile, ~/.bashrc or ~/.zshrc',
@@ -51,7 +48,7 @@ def make_symbolic(args):
         '    export PATH={}/bin:${{PATH}}'.format(os.getcwd()),
         ''
     ]
-    print('\n'.join(description))
+    print('\n'.join(message))
 
 
 def clean():
