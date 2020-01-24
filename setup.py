@@ -22,7 +22,7 @@ def main(args):
 
 def rewrite_shebang(args):
     shebang = '#!'+args.python_path
-    print('shebang:', shebang)
+    print('\nshebang:', shebang)
     for pyfile in scripts:
         bin_path = BIN_DIR + '/' + pyfile
         sp.getoutput("sed '1d' " + bin_path)
@@ -30,19 +30,15 @@ def rewrite_shebang(args):
 
 
 def add_permission(args):
-    # make symbolic links
     for pyfile in scripts:
         bin_path = BIN_DIR + '/' + pyfile
-        print('chmod +x {}'.format(bin_path))
         sp.getoutput('chmod +x {}'.format(bin_path))
-    print('\n🍣  ALL COMPLATE')
 
 
 def disp_message(args):
     message = [
-        'make symbolic in ./bin directory,',
         '',
-        'please write in your ~/.bash_profile, ~/.bashrc or ~/.zshrc',
+        'Please write following in your ~/.bash_profile, ~/.bashrc, ~/.zshrc',
         '  or other appropriate file.',
         '',
         '    export PATH={}/bin:${{PATH}}'.format(os.getcwd()),
