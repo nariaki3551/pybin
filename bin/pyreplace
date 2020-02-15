@@ -1,5 +1,6 @@
 #!/usr/local/bin/python3
 from sys import argv, stdin
+import subprocess as sp
 
 __doc__ = """
 Usage:
@@ -8,6 +9,7 @@ Usage:
 
 Options:
     -s            Strip lines.
+    -m --mv       mv file name
     -h --help     Show this screen and exit.
 
 Note:
@@ -17,6 +19,7 @@ Note:
 """
 
 STRIP = False
+MV    = False
 
 def usage():
     print(__doc__)
@@ -29,6 +32,8 @@ def main(strA, strB):
         else:
             row = row.replace('\n', '')
         print(row.replace(strA, strB))
+        if MV:
+            sp.run(['mv', row, row.replace(strA, strB)])
 
 if __name__ == '__main__':
     for v in argv[1:]:
@@ -36,6 +41,9 @@ if __name__ == '__main__':
             usage()
         if v in ['-s']:
             STRIP = True
+            argv.remove(v)
+        if v in ['-m', '--mv']:
+            MV = True
             argv.remove(v)
     if len(argv) == 3:
         main(strA=argv[1], strB=argv[2])
