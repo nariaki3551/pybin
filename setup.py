@@ -10,7 +10,8 @@ scripts = [
     'pysort',    'pyremove',  'pyreplace',
     'pyreverse', 'pysplit',   'pysum',
     'pyvar',     'pywhile',   'pycount',
-    'pycolor'
+    'pycolor',
+    'hist'
 ]
 
 
