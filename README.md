@@ -1,5 +1,5 @@
-# pybin
-Original linux commands coded by python.
+# pybin : Original linux commands coded by python
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <br>
 
