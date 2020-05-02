@@ -9,7 +9,8 @@ scripts = [
     'pymean',    'pymin',     'pysort',
     'pyremove',  'pyreplace', 'pysplit',
     'pysum',     'pywhile',   'pycount',
-    'pycolor',   'pybin',
+    'pycolor',   'pybin',     'pyhist',
+    'pyscatter', 'pyplot',    'pyviolin',
 ]
 
 

@@ -38,7 +38,6 @@ Some commands has options.<br>
 
 + manager
   + pybin
-
 + Text manipulation
   + pyline
   + pycolumn
@@ -54,6 +53,11 @@ Some commands has options.<br>
   + pymax
   + pymin
   + pymean
++ plot
+  - pyplot
+  - pyscatter
+  - pyhist
+  - pyviolin
 + other
   + pysort
   + pywhile
@@ -398,30 +402,22 @@ $ cat tmp.txt
 31 2
 10 2
 6 21
-1 4
-52 4
 
 $ cat tmp.txt | pysort
 0 39
-1 4
 10 2
 31 2
-52 4
 6 21
 
 $ cat tmp.txt | pysort -n -i
 0 39
-1 4
 6 21
 10 2
 31 2
-52 4
 
 $ cat tmp.txt | pysort -k 1 -n -i
 31 2
 10 2
-1 4
-52 4
 6 21
 0 39
 ```
