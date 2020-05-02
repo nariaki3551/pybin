@@ -1,21 +1,6 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import stdin, argv
-
-__doc__ = """
-Usage:
-    T
-    join [-h | --help]
-
-Options:
-    -h --help       Show this screen and exit.
-
-Note:
-    行と列を入れ替える(転置).
-"""
-
-def usage():
-    print(__doc__)
-    exit()
 
 def main():
     data = [ row.strip().split() for row in stdin.readlines() ]
@@ -26,10 +11,9 @@ def main():
             except: print('-', end=' ')
         print()
 
-
-
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
+    parser = argparse.ArgumentParser(
+        description='transpose between row and column'
+    )
+    args = parser.parse_args()
     main()

@@ -1,38 +1,19 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import argv, stdin
 import subprocess as sp
 from multiprocessing import Pool
 
-__doc__ = """
-Usage:
-    pywhile COMMAND
-    pywhile [-h | --help]
-
-Options:
-    -h --help     Show this screen and exit.
-    -p --parallel Run parallel
-    -q --quiet    Quiet display command
-
-Note:
-    COMMADN 標準入力を次々と実行
-    ex)
-        ls | pywhile rm
-        ls | pywhile rm -r
-        ls | pywhile "python script.py #f"
-        ls | pywhile "python script.py #f" -p
+EXAMPLE = """
+ex)
+    ls | pywhile rm
+    ls | pywhile rm -r
+    ls | pywhile "python script.py #f"
+    ls | pywhile "python script.py #f" -p 2
 """
 
-PARALLEL = False
-QUIET = False
 
-def usage():
-    print(__doc__)
-    exit()
-
-
-def gen_command(com, line):
-    # com: list -> str
-    command = ' '.join(com)
+def gen_command(command, line):
     if "#f" in command:
         command = command.replace('#f', line.strip(), -1)
     else:
@@ -48,27 +29,33 @@ def run(command):
     sp.run(command)
 
 
-def main(com):
-    if not PARALLEL:
+def main(command):
+    if PROCESSES == 1:
         for line in stdin.readlines():
-            run(gen_command(com, line))
+            run(gen_command(command, line))
     else:
-        commands = [gen_command(com, line) for line in stdin.readlines()]
-        with Pool(processes=None) as pool:
+        commands = [gen_command(command, line) for line in stdin.readlines()]
+        with Pool(processes=PROCESSES) as pool:
             pool.map(run, commands)
 
 
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-p', '--parallel']:
-            PARALLEL = True
-            argv.remove(v)
-        if v in ['-q', '--quiet']:
-            QUIET = True
-            argv.remove(v)
-    if len(argv) != 1:
-        main(com=argv[1:])
-    else:
-        usage()
+    parser = argparse.ArgumentParser(
+        description="run command + input",
+    )
+    parser.add_argument('command')
+    parser.add_argument(
+        '-q', '--quiet', action='store_true',
+        help='do not display command'
+    )
+    parser.add_argument(
+        '-p', '--processes', type=int,
+        default=1,
+        help='process number when parallel execution'
+    )
+    args = parser.parse_args()
+
+    PROCESSES = args.processes
+    QUIET = args.quiet
+
+    main(args.command)

@@ -5,13 +5,11 @@ import subprocess as sp
 BIN_DIR = './bin'
 scripts = [
     'T',         'pyadd',     'pycolumn',
-    'pycorr',    'pyjoin',    'pyline',
-    'pymax',     'pymean',    'pymin',
-    'pysort',    'pyremove',  'pyreplace',
-    'pyreverse', 'pysplit',   'pysum',
-    'pyvar',     'pywhile',   'pycount',
-    'pycolor',
-    'hist'
+    'pyjoin',    'pyline',    'pymax',
+    'pymean',    'pymin',     'pysort',
+    'pyremove',  'pyreplace', 'pysplit',
+    'pysum',     'pywhile',   'pycount',
+    'pycolor',   'pybin',
 ]
 
 

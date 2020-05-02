@@ -1,0 +1,67 @@
+#!/usr/local/bin/python3
+import argparse
+from os import path
+import subprocess as sp
+
+scripts = [
+    'T',         'pyadd',     'pycolumn',
+    'pyjoin',    'pyline',    'pymax',
+    'pymean',    'pymin',     'pysort',
+    'pyremove',  'pyreplace', 'pysplit',
+    'pysum',     'pywhile',   'pycount',
+    'pycolor'
+]
+
+
+def print_list():
+    n_col = 6
+    print('pybin commands')
+    input_str = ''
+    for ix, command in enumerate(scripts):
+        if ix % n_col == 0:
+            input_str += '\n'
+        input_str += command + ' '
+    input_str += '\n'
+
+    with sp.Popen(['pycolumn', '-a'], stdin=sp.PIPE) as proc:
+        proc.communicate(input_str.encode())
+
+
+def pybin_upgrade():
+    here = path.abspath(path.dirname(__file__))
+    commands = ['git', '-C', '{here}'.format(here=here), 'pull']
+    print('pybin upgrade ...')
+    print(' '.join(commands))
+    sp.run(commands)
+
+
+if __name__ == '__main__':
+    description = (
+        'pybin', ''
+        'author: tateiwa nariaki',
+        'date  : March, 2020'
+    )
+
+    parser = argparse.ArgumentParser(
+        description='\n'.join(description),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        '-l', '--list', action='store_true',
+        help='show all pybin commands'
+    )
+    parser.add_argument(
+        '--upgrade', action='store_true',
+        help='upgrade pybin'
+    )
+    args = parser.parse_args()
+
+    if args.list:
+        print_list()
+
+    if args.upgrade:
+        pybin_upgrade()
+
+    if not args.list and not args.upgrade:
+        parser.print_help()
+

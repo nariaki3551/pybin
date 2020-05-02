@@ -1,41 +1,16 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import argv, stdin
 
-__doc__ = """
-Usage:
-    pysort [-r | --reverse] [-n]
-    pysort [-k | --key] column1 column2 ...
-    pysort [-h | --help]
-Options:
-    -r --reverse    Reverse.
-    -k --key
-    -n
-    -i
-    -h --help       Show this screen and exit.
-Note:
-    標準入力をsortする.
-    -k keyを指定できる.
-    -n 数字の大小で.
-    -i intに変換する.
-"""
 
-REVERSE = False
-KEY = False
-NUMBER = False
-INT = False
-
-def usage():
-    print(__doc__)
-    exit()
-
-def main(key=None):
+def main():
     data = [ row.strip().split() for row in stdin.readlines() ]
-    if key == []:
+    if KEY == -100:
         if NUMBER:
             data[:] = [ [float(elm) for elm in row] for row in data ]
             tmp = sorted(data, reverse=REVERSE)
             if INT:
-                tmp[:] = [ [int(elm) for elm in row] for row in tmp ]
+                tmp[:] = [ [int(elm) for elm in row] for row in tmp]
             tmp[:] = [ [str(elm) for elm in row] for row in tmp ]
         else:
             tmp = sorted(data, reverse=REVERSE)
@@ -43,28 +18,41 @@ def main(key=None):
         for row in tmp:
             print(' '.join(row))
 
-
     else:
         if NUMBER:
-            tmp = eval('sorted(data, key=lambda x: (float(x[{}])), reverse=REVERSE)'.format(']), float(x['.join(key)))
+            tmp = eval('sorted(data, key=lambda x: (float(x[{}])), reverse=REVERSE)'.format(KEY))
         else:
-            tmp = eval('sorted(data, key=lambda x: (x[{}]), reverse=REVERSE)'.format('], x['.join(key)))
+            tmp = eval('sorted(data, key=lambda x: (x[{}]), reverse=REVERSE)'.format(KEY))
 
         for row in tmp:
             print(' '.join(row))
 
+
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-r', '--reverse']:
-            REVERSE = True; argv.remove(v)
-        if v in ['-k', '--key']:
-            KEY = True; argv.remove(v)
-        if v in ['-n']:
-            NUMBER = True; argv.remove(v)
-        if v in ['-i']:
-            INT = True; argv.remove(v)
-    if KEY and len(argv) < 2:
-        usage()
-    main(key=argv[1:])
+    parser = argparse.ArgumentParser(
+        description="標準入力をsortする",
+    )
+    parser.add_argument(
+        '-k', '--key', type=int, default=-100,
+        help='int 列目をkeyにしてsortする'
+    )
+    parser.add_argument(
+        '-n', '--number', action='store_true',
+        help='数字によりsortする'
+    )
+    parser.add_argument(
+        '-i', '--int', action='store_true',
+        help='intに変換する'
+    )
+    parser.add_argument(
+        '-r', '--reverse', action='store_true',
+        help='降順にsortする'
+    )
+    args = parser.parse_args()
+
+    KEY = args.key
+    NUMBER = args.number
+    INT = args.int
+    REVERSE = args.reverse
+
+    main()
