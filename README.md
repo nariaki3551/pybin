@@ -36,6 +36,9 @@ Some commands has options.<br>
 
 ## Commands
 
++ manager
+  + pybin
+
 + Text manipulation
   + pyline
   + pycolumn
@@ -58,6 +61,24 @@ Some commands has options.<br>
 <br>
 
 ## Simple explanation of commands
+
+**pybin**
+
+```shell
+$ pybin -l  # show all commands
+pybin commands
+
+T      pyadd   pycolumn pyjoin   pyline    pymax  
+pymean pymin   pysort   pyremove pyreplace pysplit
+pysum  pywhile pycount  pycolor 
+
+$ pybin --upgrade  # upgrade pybin
+pybin upgrade ...
+git -C XXX pull
+Already up to date.
+```
+
+<br>
 
 ### Text manipulation
 
@@ -430,21 +451,3 @@ wc dict.py
 
 $ ls | pywhile wc -p 3  # process number
 ```
-
-
-<br>
-<br>
-<br>
-## Specific example of commands
-Sort files by line number.
-
-```
-ls | pywhile "wc -l" -q | pysort -k 0 -n
-```
-<br>
-Kill all jobs.
-
-```
-jobs -ls | pycolumn 1 | pywhile kill
-```
-
