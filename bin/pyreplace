@@ -1,51 +1,37 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import argv, stdin
 import subprocess as sp
 
-__doc__ = """
-Usage:
-    pyreplace [-s] strA strB
-    pyreplace [-h | --help]
-
-Options:
-    -s            Strip lines.
-    -m --mv       mv file name
-    -h --help     Show this screen and exit.
-
-Note:
-    入力文字列のstrAをstrBに置き換える
-    ex)
-        pyreplace .py .java
+EXAMPLE = """
+ex)
+    ls | pyreplace .py .java
+    ls | pyreplace .py .java --mv
 """
 
-STRIP = False
-MV    = False
-
-def usage():
-    print(__doc__)
-    exit()
 
 def main(strA, strB):
     for row in stdin.readlines():
-        if STRIP:
-            row = row.strip()
-        else:
-            row = row.replace('\n', '')
+        row = row.replace('\n', '')
         print(row.replace(strA, strB))
         if MV:
             sp.run(['mv', row, row.replace(strA, strB)])
 
+
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-s']:
-            STRIP = True
-            argv.remove(v)
-        if v in ['-m', '--mv']:
-            MV = True
-            argv.remove(v)
-    if len(argv) == 3:
-        main(strA=argv[1], strB=argv[2])
-    else:
-        usage()
+    parser = argparse.ArgumentParser(
+        description="入力文字列のstrAをstrBに置き換える",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=EXAMPLE
+    )
+    parser.add_argument('strA')
+    parser.add_argument('strB')
+    parser.add_argument(
+        '--mv', action='store_true',
+        help='run command `mv original replaced`'
+    )
+    args = parser.parse_args()
+
+    MV = args.mv
+
+    main(strA=args.strA, strB=args.strB)

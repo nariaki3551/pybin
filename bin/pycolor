@@ -1,51 +1,44 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import argv, stdin
 
-__doc__ = """
-Usage:
-    pycolor [color] char -nb
-    pycolor [-h | --help]
-
-Options:
-    -nb          not bold print
-    -h --help    Show this screen and exit.
-
-Note:
-    色付き表示
-    blue, cyan , green, magenta
-    red, white, yellow
-
-    ex)
+EXAMPLE = """
+ex)
     cat file | pycolor import
-    cat file | pycolor red import | pycolor blue from -nb
+    cat file | pycolor import -c red | pycolor from -c blue -nb
 """
 
-def usage():
-    print(__doc__)
-    exit()
 
-BOLD = True
-
-def main(color, char):
+def main(color, _str):
     exec('from fabric.colors import {}'.format(color))
     for row in stdin.readlines():
-        print(row.replace(char, eval('{}(char, bold={})'.format(color, True if BOLD else False))), end='')
+        colored_str = eval('{}(_str, bold={})'.format(
+            color, 'True' if BOLD else 'False')
+        )
+        print(row.replace(_str, colored_str), end='')
 
 
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-nb', '--notbold']:
-            BOLD = False
-            argv.remove(v)
+    parser = argparse.ArgumentParser(
+        description='add color to string',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=EXAMPLE
+    )
+    parser.add_argument(
+        'str'
+    )
+    parser.add_argument(
+        '-c', '--color',
+        default='green',
+        choices=['blue', 'cyan', 'green', 'magenta', 'red', 'white', 'yellow']
+    )
+    parser.add_argument(
+        '-nb', '--not_bold', action='store_false',
+        help='not bold print'
+    )
+    args = parser.parse_args()
+    BOLD = args.not_bold
 
-    if len(argv) == 2:
-        color, char = 'green', argv[1]
-    elif len(argv) == 3:
-        color, char = argv[1], argv[2]
-    else:
-        usage()
-    main(color=color, char=char)
+    main(color=args.color, _str=args.str)
 
 

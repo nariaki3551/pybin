@@ -1,37 +1,14 @@
 #!/usr/local/bin/python3
-# ---- memo ---------------------
-# [2017-02-10] \|入力を追加
-# -------------------------------
+import argparse
 from sys import argv, stdin
 from collections import defaultdict
 
-__doc__ = """
-Usage:
-    pycolumn [-l] [-a] [-at] number or splice
-    pycolumn [-h | --help]
-
-Options:
-    -l              Show column number.
-    -a              Arrange (head).
-    -at             Arrange (tail).
-    -h --help       Show this screen and exit.
-
-Note:
-    pycolumn [number] でnumber+1列目を表示.
-    スライスの入力はpython記法に準ずる.
-    ex)
-        cat file | pycolumn 3
-        cat file | pycolumn 4:-1
-        cat file | pycolumn 1\|4\|8: (1, 4行目と8行目以降を表示)
+EXAMPLE = """
+ex)
+    cat file | pycolumn -s 3
+    cat file | pycolumn -s 4:-1
+    cat file | pycolumn -s 1\|4\|8: (print 1 line and 4--8 lines)
 """
-
-COLUMN = False
-ARRANGE = False
-ARRANGE_TAIL = False
-
-def usage():
-    print(__doc__)
-    exit()
 
 
 def main(av):
@@ -70,24 +47,33 @@ def main(av):
                         tmp.append(' ')
             print(' '.join(tmp))
 
+
 if __name__ == '__main__':
-    if len(argv) < 2:
-        usage()
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-l']:
-            COLUMN = True
-            argv.remove('-l')
-        if v in ['-a']:
-            ARRANGE = True
-            argv.remove('-a')
-        if v in ['-at']:
-            ARRANGE_TAIL = True
-            argv.remove('-at')
-    if len(argv) == 2:
-        main(av=argv[1])
-    elif COLUMN or ARRANGE or ARRANGE_TAIL:
-        main(av=None)
-    else:
-        usage()
+    parser = argparse.ArgumentParser(
+        description="pycolumn [number or slice]",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=EXAMPLE
+    )
+    parser.add_argument(
+        '-s', '--slice', default=None,
+        help='number or splice (default None)'
+    )
+    parser.add_argument(
+        '-l', action='store_true',
+        help='Show column number'
+    )
+    parser.add_argument(
+        '-a', action='store_true',
+        help='Arrange (head)'
+    )
+    parser.add_argument(
+        '-at', action='store_true',
+        help='Arrange (tail)'
+    )
+    args = parser.parse_args()
+
+    COLUMN = args.l
+    ARRANGE = args.a
+    ARRANGE_TAIL = args.at
+
+    main(av=args.slice)

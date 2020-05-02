@@ -1,27 +1,7 @@
 #!/usr/local/bin/python3
+import argparse
 from sys import argv, stdin
 
-__doc__ = """
-Usage:
-    pymin [-f] [-i]
-    pymin [-h | --help]
-
-Options:
-    -f              Don't show error message.
-    -i              Convert result to int.
-    -h --help       Show this screen and exit.
-
-Note:
-    標準入力の数字の最小値を出力する.
-    標準入力が数字以外の場合、その行を飛ばす.
-"""
-
-FORCE = False
-FLOAT2INT = False
-
-def usage():
-    print(__doc__)
-    exit()
 
 def main():
     data = list()
@@ -41,12 +21,26 @@ def main():
     else:
         print(_min)
 
+
 if __name__ == '__main__':
-    for v in argv[1:]:
-        if v in ['-h', '--help']:
-            usage()
-        if v in ['-f']:
-            FORCE = True
-        if v in ['-i']:
-            FLOAT2INT = True
+    description = """
+        output min value.
+        if input line is not number, the line is ignore."""
+
+    parser = argparse.ArgumentParser(
+        description=description,
+    )
+    parser.add_argument(
+        '-f', '--force', action='store_true',
+        help='Do not show error message'
+    )
+    parser.add_argument(
+        '-i', '--int', action='store_true',
+        help='Convert result to int'
+    )
+    args = parser.parse_args()
+
+    FORCE = args.force
+    FLOAT2INT = args.int
+
     main()
