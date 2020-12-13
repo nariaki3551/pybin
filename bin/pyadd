@@ -30,6 +30,6 @@ if __name__ == '__main__':
     HEAD = args.head
     TAIL = args.tail
     if HEAD or TAIL:
-        main(_str=argv[1])
+        main(_str=args.str)
     else:
         parser.print_help()

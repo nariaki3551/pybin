@@ -24,8 +24,7 @@ def main(av):
     if av.replace('-', '').isdigit():
         print(data[int(av)])
     else:
-        try: tmp_data = eval('data[{}]'.format(av))
-        except: usage()
+        tmp_data = eval('data[{}]'.format(av))
 
         for elm in tmp_data:
             print(elm)
