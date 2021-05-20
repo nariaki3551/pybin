@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 import argparse
-from sys import argv, stdin
+from sys import stdin
 import subprocess as sp
 from multiprocessing import Pool
 
