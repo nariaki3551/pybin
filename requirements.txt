@@ -1,2 +1,3 @@
 numpy
 fabric3
+tqdm
