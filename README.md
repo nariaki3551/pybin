@@ -38,7 +38,7 @@ Some commands has options.<br>
 
 + manager
   + pybin
-+ Text manipulation
++ [Text manipulation](https://github.com/nariaki3551/pybin#text-manipulation)
   + pyline
   + pycolumn
   + T
@@ -48,18 +48,18 @@ Some commands has options.<br>
   + pyremove
   + pyadd
   + pycount
-+ statistics
++ [statistics](https://github.com/nariaki3551/pybin#statistics)
   + pysum
   + pymax
   + pymin
   + pymean
   + pystat
-+ plot
++ [plot](https://github.com/nariaki3551/pybin#plot)
   - pyplot
   - pyscatter
   - pyhist
   - pyviolin
-+ other
++ [other](https://github.com/nariaki3551/pybin#others)
   + pysort
   + pywhile
 
@@ -413,7 +413,25 @@ stdev        10.0
 
 <br>
 
+### plot
+
+- pyplot
+- pyscatter
+- pyhist
+- pyviolin
+
+```
+$ cat test.txt
+10
+20
+30
+
+$ cat test.txt | pyplot
+>> output image
+```
+
 ### others
+
 #### pysort
 
 Sort.
