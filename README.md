@@ -53,6 +53,7 @@ Some commands has options.<br>
   + pymax
   + pymin
   + pymean
+  + pystat
 + plot
   - pyplot
   - pyscatter
@@ -389,6 +390,27 @@ $ cat test.txt
 $ cat test.txt | pymean
 20.0
 ```
+
+#### pystat
+
+Display all statistics information.
+
+```shell
+$ cat test.txt
+10
+20
+30
+
+$ cat test.txt | pystat
+num_data     3
+min          10.0
+max          30.0
+mean         20.0
+median       20.0
+variance     100.0
+stdev        10.0
+```
+
 <br>
 
 ### others
