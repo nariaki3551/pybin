@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 import argparse
-from sys import stdin, argv
+from sys import stdin
 
 def main():
     data = [ row.strip().split() for row in stdin.readlines() ]
