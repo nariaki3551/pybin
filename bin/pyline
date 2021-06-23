@@ -6,6 +6,7 @@ EXAMPLE = """
 ex)
     cat file | pyline -s 3
     cat file | pyline -s 4:-1
+    cat file | pyline -s 4:-1\|2\|0
 """
 
 
@@ -24,9 +25,16 @@ def main(av):
     if av.replace('-', '').isdigit():
         print(data[int(av)])
     else:
-        tmp_data = eval('data[{}]'.format(av))
+        av = av.split('|')
+        output_data = list()
+        for li in av:
+            tmp_data = eval('data[{}]'.format(li))
+            if isinstance(tmp_data, list):
+                output_data += tmp_data
+            else:
+                output_data += [tmp_data]
 
-        for elm in tmp_data:
+        for elm in output_data:
             print(elm)
 
 
