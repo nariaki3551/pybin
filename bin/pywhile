@@ -93,7 +93,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '-c', '--chunksize',
         type=int,
-        default=None,
+        default=1,
         help='chunksize of imap',
     )
     parser.add_argument(
