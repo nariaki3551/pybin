@@ -10,7 +10,7 @@ Type following in where you want to save `pybin`.
 ```
 git clone https://github.com/nariaki3551/pybin.git
 cd pybin
-pip3 install -r requirement.txt
+pip3 install -r requirements.txt
 python3 setup.py
 ```
 
