@@ -1,18 +1,17 @@
-#!/usr/local/bin/python3
 import argparse
-from sys import stdin
+import sys
 
 
 def main(_str):
-    for row in stdin.readlines():
+    for row in sys.stdin.readlines():
         print(_str.join(row.split()))
 
 
-if __name__ == '__main__':
+def cli_main():
     parser = argparse.ArgumentParser(
         description="join",
     )
-    parser.add_argument('str')
+    parser.add_argument("str")
     args = parser.parse_args()
 
     main(_str=args.str)

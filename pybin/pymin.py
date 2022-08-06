@@ -1,28 +1,27 @@
-#!/usr/local/bin/python3
 import argparse
-from sys import stdin
+import sys
 
 
-def main():
+def main(force, float2int):
     data = list()
-    _min = float('inf')
-    for row in stdin.readlines():
+    _min = float("inf")
+    for row in sys.stdin.readlines():
         row = row.strip()
         try:
             _min = min(_min, float(row))
         except:
-            if FORCE:
+            if force:
                 pass
             else:
-                print('error line: {}'.format(row))
+                print("error line: {}".format(row))
 
-    if FLOAT2INT:
+    if float2int:
         print(int(_min))
     else:
         print(_min)
 
 
-if __name__ == '__main__':
+def cli_main():
     description = """
         output min value.
         if input line is not number, the line is ignore."""
@@ -31,16 +30,11 @@ if __name__ == '__main__':
         description=description,
     )
     parser.add_argument(
-        '-f', '--force', action='store_true',
-        help='Do not show error message'
+        "-f", "--force", action="store_true", help="Do not show error message"
     )
     parser.add_argument(
-        '-i', '--int', action='store_true',
-        help='Convert result to int'
+        "-i", "--int", action="store_true", help="Convert result to int"
     )
     args = parser.parse_args()
 
-    FORCE = args.force
-    FLOAT2INT = args.int
-
-    main()
+    main(args.force, args.int)

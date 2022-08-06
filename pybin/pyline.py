@@ -1,6 +1,5 @@
-#!/usr/local/bin/python3
 import argparse
-from sys import stdin
+import sys
 
 EXAMPLE = """
 ex)
@@ -10,10 +9,10 @@ ex)
 """
 
 
-def main(av):
-    data = [row.replace('\n', '') for row in stdin.readlines()]
-    if LINE:
-        data[:] = ['[{}] {}'.format(count, row) for count, row in enumerate(data)]
+def main(av, line):
+    data = [row.replace("\n", "") for row in sys.stdin.readlines()]
+    if line:
+        data[:] = ["[{}] {}".format(count, row) for count, row in enumerate(data)]
 
     # 出力
     if av is None:
@@ -22,13 +21,13 @@ def main(av):
         exit()
 
     # if av not in None
-    if av.replace('-', '').isdigit():
+    if av.replace("-", "").isdigit():
         print(data[int(av)])
     else:
-        av = av.split('|')
+        av = av.split("|")
         output_data = list()
         for li in av:
-            tmp_data = eval('data[{}]'.format(li))
+            tmp_data = eval("data[{}]".format(li))
             if isinstance(tmp_data, list):
                 output_data += tmp_data
             else:
@@ -38,20 +37,15 @@ def main(av):
             print(elm)
 
 
-if __name__ == '__main__':
+def cli_main():
     parser = argparse.ArgumentParser(
         description="line [number or slice]",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=EXAMPLE
+        epilog=EXAMPLE,
     )
     parser.add_argument(
-        '-s', '--slice', default=None,
-        help='number or splice (default None)'
+        "-s", "--slice", default=None, help="number or splice (default None)"
     )
-    parser.add_argument(
-        '-l', action='store_true',
-        help='Show line number'
-    )
+    parser.add_argument("-l", action="store_true", help="Show line number")
     args = parser.parse_args()
-    LINE = args.l
-    main(av=args.slice)
+    main(args.slice, args.l)
