@@ -1,4 +1,4 @@
-# pybin : Original linux commands coded by python
+# pybin : Original pipline commands coded by python
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <br>
@@ -10,19 +10,9 @@ Type following in where you want to save `pybin`.
 ```
 git clone https://github.com/nariaki3551/pybin.git
 cd pybin
-pip3 install -r requirements.txt
-python3 setup.py
+python setup.py install
+python -m pip install .
 ```
-
-Then, add following in `~/.bash_profile`, `~/.bashrc`, `~/.zshrc` or other appropriate file.
-
-```
-export PATH=xxx/pybin/bin:${PATH}
-```
-
-This is displayed when you run  `python3 setup.py`.
-
-<br>
 
 ## How to use
 
