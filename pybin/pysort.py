@@ -20,13 +20,13 @@ def main(key, number, to_int, reverse):
     else:
         if number:
             tmp = eval(
-                "sorted(data, key=lambda x: (float(x[{}])), reverse=REVERSE)".format(
+                "sorted(data, key=lambda x: (float(x[{}])), reverse=reverse)".format(
                     key
                 )
             )
         else:
             tmp = eval(
-                "sorted(data, key=lambda x: (x[{}]), reverse=REVERSE)".format(key)
+                "sorted(data, key=lambda x: (x[{}]), reverse=reverse)".format(key)
             )
 
         for row in tmp:
