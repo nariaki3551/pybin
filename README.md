@@ -10,7 +10,6 @@ Type following in where you want to save `pybin`.
 ```
 git clone https://github.com/nariaki3551/pybin.git
 cd pybin
-python setup.py install
 python -m pip install .
 ```
 
