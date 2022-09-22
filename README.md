@@ -25,8 +25,6 @@ Some commands has options.<br>
 
 ## Commands
 
-+ manager
-  + pybin
 + [Text manipulation](https://github.com/nariaki3551/pybin#text-manipulation)
   + pyline
   + pycolumn
@@ -54,26 +52,6 @@ Some commands has options.<br>
 
 <br>
 
-## Simple explanation of commands
-
-**pybin**
-
-```shell
-$ pybin -l  # show all commands
-pybin commands
-
-T      pyadd   pycolumn pyjoin   pyline    pymax  
-pymean pymin   pysort   pyremove pyreplace pysplit
-pysum  pywhile pycount  pycolor 
-
-$ pybin --upgrade  # upgrade pybin
-pybin upgrade ...
-git -C XXX pull
-Already up to date.
-```
-
-<br>
-
 ### Text manipulation
 
 #### pyline
@@ -94,12 +72,31 @@ cat sample.txt | pyline -l
 cat sample.txt | pyline -s 1
 bbb
 
-cat sample.txt | pyline :-1
+cat sample.txt | pyline -s :-1
 aaa
 bbb
 ```
 
 <br>
+
+#### pysplit
+
+Split the specified char.
+
+```shell
+$ ls
+README.md
+T.py
+column.py
+dict.py
+
+
+$ ls | pysplit .
+README md
+T py
+column py
+dict py
+```
 
 #### pycolumn
 
@@ -164,27 +161,6 @@ md py py py
 $ ls | split . | T | column -a
 README T  column dict
 md     py py     py
-```
-
-<br>
-
-#### pysplit
-
-Split the specified char.
-
-```shell
-$ ls
-README.md
-T.py
-column.py
-dict.py
-
-
-$ ls | pysplit .
-README md
-T py
-column py
-dict py
 ```
 
 <br>
@@ -313,7 +289,7 @@ $ cat test.txt | pysum
 60.0
 
 $ cat test.txt | pysum -i
-60
+60  # to integer
 
 
 $ cat test2.txt
@@ -327,7 +303,7 @@ error line: aaa
 60.0
 
 $ cat test2.txt | pysum -f -i
-60
+60  # supress error
 ```
 <br>
 
@@ -345,7 +321,7 @@ $ cat test.txt | pymax
 30.0
 
 $ cat test.txt | pymax -i
-30
+30  # to integer
 ```
 <br>
 #### pymin
@@ -362,7 +338,7 @@ $ cat test.txt | pymin
 10.0
 
 $ cat test.txt | pymin -i
-10
+10  # to integer
 ```
 
 <br>
@@ -433,18 +409,21 @@ $ cat tmp.txt
 6 21
 
 $ cat tmp.txt | pysort
+# sort by 0-th column
 0 39
 10 2
 31 2
 6 21
 
 $ cat tmp.txt | pysort -n -i
+# sort by 0-th column as number
 0 39
 6 21
 10 2
 31 2
 
 $ cat tmp.txt | pysort -k 1 -n -i
+# sort by 1-th column as number
 31 2
 10 2
 6 21
