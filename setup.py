@@ -17,7 +17,6 @@ setuptools.setup(
     entry_points={
         "console_scripts": [
             "pyadd=pybin.pyadd:cli_main",
-            "pybin=pybin.pybin:cli_main",
             "pycolumn=pybin.pycolumn:cli_main",
             "pycount=pybin.pycount:cli_main",
             "pyhist=pybin.pyhist:cli_main",
