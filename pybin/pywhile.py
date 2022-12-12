@@ -31,7 +31,8 @@ def gen_command_data(command, line):
     return command, output_file
 
 
-def run(command_data, quiet):
+def run(args):
+    command_data, quiet = args
     command, output_file = command_data
 
     if not quiet:
@@ -61,11 +62,11 @@ def main(command, num_processes, quiet, progress, chunksize):
         for line in iter_wrapper(lines):
             run(gen_command_data(command, line))
     else:
-        commands = [gen_command_data(command, line) for line in sys.stdin.readlines()]
+        command_datas = [gen_command_data(command, line) for line in sys.stdin.readlines()]
         with multiprocessing.Pool(processes=num_processes) as pool:
-            args = [(command, quiet) for command in commands]
+            args = [(command_data, quiet) for command_data in command_datas]
             imap = pool.imap(run, args, chunksize=chunksize)
-            list(iter_wrapper(imap, total=len(commands)))
+            list(iter_wrapper(imap, total=len(command_datas)))
 
 
 def cli_main():
