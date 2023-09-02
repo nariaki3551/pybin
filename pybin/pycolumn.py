@@ -1,5 +1,6 @@
 import argparse
 import sys
+import collections
 
 EXAMPLE = """
 ex)
@@ -13,7 +14,7 @@ def main(av, column, arrange, arrange_tail):
     data = [row.strip().split() for row in sys.stdin.readlines()]
 
     if arrange or arrange_tail:
-        arr_dict = dict()
+        arr_dict = collections.defaultdict(int)
         for elm in data:
             for col, el in enumerate(elm):
                 arr_dict[col] = max(arr_dict[col], len(el))
